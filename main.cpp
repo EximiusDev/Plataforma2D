@@ -1,15 +1,26 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include "Game.h"
 using namespace sf;
 
 int main(int argc, char *argv[]){
-	Game G;
-	G.run();
-		
+	RenderWindow w(VideoMode(640,480),"Ejemplo de SFML");
+	Texture t;
+	Sprite s;
 	
+	t.loadFromFile("Textures/sfml.png");
+	s.setTexture(t);
+	s.setPosition(175, 130);
+	
+	while(w.isOpen()) {
+		Event e;
+		while(w.pollEvent(e)) {
+			if(e.type == Event::Closed)
+				w.close();	
+		}
+		
+		w.clear(Color(255,255,255,255));
+		w.draw(s);
+		w.display();
+	}
 	return 0;
 }
 

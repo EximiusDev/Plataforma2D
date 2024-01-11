@@ -1,9 +1,10 @@
 
-#include "Game.h"
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
+#include "../H/Game.h"
 using namespace sf;
 
 Game::Game():win(VideoMode(640,480),"Ejemplo de SFML"){

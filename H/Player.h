@@ -6,7 +6,7 @@ using namespace sf;
 class Player: public Object{
 private:
 	
-	bool Jumping;
+	bool Jumping = false;
 	int Jumping_Time=40;
 public:
 	Player();

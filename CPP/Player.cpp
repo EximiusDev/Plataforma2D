@@ -3,8 +3,12 @@
 using namespace std;
 
 Player::Player():Object("./Textures/1.png") {
-	spr.setPosition(x_position,y_position);
-	spr.setScale(0.5,0.5);
+	positionG = {400, 500};
+	//speed = {0,0};
+	// ascel = {10,10};
+	spr.setPosition(positionG);
+	spr.setScale(ScalePlayer);
+
 	
 }
 
@@ -18,40 +22,53 @@ void Player::Update(){
 	NumAnim+=1;
 	if ((Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))&&Jumping_Time>0){
 		speedG.y=-10;
-		y_position+=speedG.y;
+		positionG.y+=speedG.y;
+		Jumping=true;
+		
+	}	
+	if (Keyboard::isKeyPressed(Keyboard::Down)||Keyboard::isKeyPressed(Keyboard::S)){
+		speedG.y=+10;
+		positionG.y+=speedG.y;
+		Jumping=true;
 		
 	}	
 	
-	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&x_position<1650){
+	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&positionG.x<1650){
 		speedG.x=10;
-		x_position+=speedG.x;
-		spr.setScale(0.5,0.5);
-		spr.setPosition(x_position,y_position);
+		positionG.x+=speedG.x;
+		ScalePlayer.x=0.5;
+		spr.setPosition(positionG);
 		Walking= true;
 	}
 	
-	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::A))&&x_position>-200){	
+	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::A))&&positionG.x>-200){	
 		speedG.x=-10;
-		x_position+=speedG.x;
-		spr.setScale(-0.5,0.5);
-		spr.setPosition(x_position+256,y_position);
+		positionG.x+=speedG.x;
+		ScalePlayer.x=-0.5;
+		spr.setPosition(positionG.x+256,positionG.y);
 		Walking= true;
 	}
 	
-	if(NumAnim>20){
+	if(NumAnim>20||(NumAnim>8&&Jumping)){
 		NumAnim=1;
 	}
-	if(Walking){
-		Name1="./Textures/Walk";
-		Walking = false;
+	if(Jumping){
+		Name1="./Textures/J";
+		Jumping = false;
 	}else{
-		Name1="./Textures/";
+		if(Walking){
+			Name1="./Textures/Walk";
+			Walking = false;
+			
+		}else{
+			Name1="./Textures/";
+		}
 	}
 	string Name2=to_string(NumAnim);
 	string Name3=".png";
 	tex.loadFromFile(Name1+Name2+Name3);
 	spr.setTexture(tex);
-		
+	spr.setScale(ScalePlayer);
 	spr.move(speedG);
 	
 }

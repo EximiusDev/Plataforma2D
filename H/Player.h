@@ -7,10 +7,10 @@ class Player: public Object{
 private:
 	string Name1;
 	int NumAnim=1;
-	float x_position=400;
-	float y_position=500;
-	bool Walking;
+	bool Walking=false;
+	bool Jumping=false;
 	int Jumping_Time=40;
+	Vector2f ScalePlayer={0.5,0.5};
 public:
 	Player();
 	void Update();

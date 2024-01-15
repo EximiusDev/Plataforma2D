@@ -13,6 +13,7 @@ Vector2f speedG = {0,0}; //Velocidad general
 Texture tex;
 Sprite spr;
 public:
+	Object();
 	Object(string name);
 	void Draw (RenderWindow& win);
 	bool Collide(Object &);

@@ -1,6 +1,6 @@
 
 #include "../H/Object.h"
-
+Object::Object() {}
 Object::Object(string name) {
 	tex.loadFromFile(name);
 	spr.setTexture(tex);

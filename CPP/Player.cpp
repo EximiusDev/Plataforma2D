@@ -4,7 +4,7 @@ using namespace std;
 
 Player::Player():Object("./Textures/1.png") {
 	spr.setPosition(x_position,y_position);
-	
+	spr.setScale(0.5,0.5);
 	
 }
 
@@ -18,23 +18,23 @@ void Player::Update(){
 	NumAnim+=1;
 	if ((Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))&&Jumping_Time>0){
 		speedG.y=-10;
-		y_position-=10;
+		y_position+=speedG.y;
 		
 	}	
 	
-	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::D))&&x_position<1650){
+	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&x_position<1650){
 		speedG.x=10;
-		x_position+=10;
-		spr.setScale(1,1);
+		x_position+=speedG.x;
+		spr.setScale(0.5,0.5);
 		spr.setPosition(x_position,y_position);
 		Walking= true;
 	}
 	
-	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::A))&&x_position>-200){	
+	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::A))&&x_position>-200){	
 		speedG.x=-10;
-		x_position-=10;
-		spr.setScale(-1,1);
-		spr.setPosition(x_position+512,y_position);
+		x_position+=speedG.x;
+		spr.setScale(-0.5,0.5);
+		spr.setPosition(x_position+256,y_position);
 		Walking= true;
 	}
 	

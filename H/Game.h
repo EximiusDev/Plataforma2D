@@ -17,6 +17,7 @@ private:
 	Texture textur;
 	Sprite spr;
 	Player p;
+	Background back;
 	
 public:
 		

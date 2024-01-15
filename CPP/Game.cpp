@@ -24,12 +24,13 @@ void Game::run(){
 void Game::update(){
 	
 		p.Update();
-
+back.Update();
 	
 }
 void Game::draw(){
 		win.clear(Color(255,255,255,255));
 		p.Draw(win);
+		//back.Obj[1].Draw(win);
 		win.display();
 }
 void Game::processEvent(){

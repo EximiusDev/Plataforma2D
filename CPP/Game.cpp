@@ -8,7 +8,7 @@
 #include "../Background.h"
 using namespace sf;
 
-Game::Game():win(VideoMode(1920,1080),"Ejemplo de SFML"){
+Game::Game():win(VideoMode(1920,1080),"Juego Plataformero"){
 	win.setFramerateLimit(60);
 	textur.loadFromFile("");
 	spr.setTexture(textur);
@@ -41,6 +41,6 @@ void Game::draw(){
 void Game::processEvent(){
 	Event e;
 	while(win.pollEvent(e)) {
-	if(e.type == Event::Closed)
+		if(e.type == Event::Closed)
 	win.close();	
 						}}

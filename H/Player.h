@@ -5,8 +5,7 @@
 using namespace sf;
 class Player: public Object{
 private:
-	float x_position=400;
-	float y_position=500;
+	
 	bool Jumping;
 	int Jumping_Time=40;
 public:

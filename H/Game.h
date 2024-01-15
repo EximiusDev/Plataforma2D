@@ -13,7 +13,7 @@ private:
 	RenderWindow win;
 	Texture textur;
 	Sprite spr;
-	vector <*Background> back[6];
+	//vector <*Background> back[6];
 	
 	Player p;
 	

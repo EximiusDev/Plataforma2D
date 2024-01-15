@@ -7,8 +7,8 @@ Object::Object(string name) {
 	
 	
 }
-void Object::Draw (RenderWindow &) {
-	
+void Object::Draw (RenderWindow& win ) {
+	win.draw(spr);
 }
 bool Object::Collide(Object &){
 	

@@ -5,9 +5,11 @@
 using namespace sf;
 class Player: public Object{
 private:
+	string Name1;
+	int NumAnim=1;
 	float x_position=400;
 	float y_position=500;
-	bool Jumping;
+	bool Walking;
 	int Jumping_Time=40;
 public:
 	Player();

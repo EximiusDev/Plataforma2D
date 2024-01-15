@@ -5,7 +5,10 @@
 #include <SFML\Graphics\Texture.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 #include "Player.h"
-#include "../Background.h"
+#include "../H/Background.h"
+#include <vector>
+#include "Background.h"
+using namespace std;
 using namespace sf;
 
 class Game {
@@ -13,8 +16,6 @@ private:
 	RenderWindow win;
 	Texture textur;
 	Sprite spr;
-	vector <*Background> back[6];
-	
 	Player p;
 	
 public:

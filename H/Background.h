@@ -12,7 +12,6 @@ private:
 	
 public:
 	Background();
-	Background(string name);
 	void Update(int i);
 	void Init(string name);
 	

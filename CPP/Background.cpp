@@ -4,11 +4,7 @@ Background::Background(){
 	spr.setScale(6,6);
 	spr.setPosition(0,0);
 }
-Background::Background(string name):Object(name){
-	
-	
-	
-}
+
 void Background::Update(int i){
 	spr.move(speedG.x*i,speedG.y);
 }

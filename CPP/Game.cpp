@@ -7,9 +7,19 @@
 #include "../H/Game.h"
 #include "../H/Background.h"
 using namespace sf;
-
+/// MEJORAR EL BACJGROUND DE ACA
 Game::Game():win(VideoMode(1920,1080),"Ejemplo de SFML"){
 	win.setFramerateLimit(60);
+	
+	back.resize(6);
+	for(int i=0;i<6;i++) { 
+		string Name1="./Textures/B";
+		string Name2=to_string(i+1);
+		string Name3=".png";
+		string Name4=Name1+Name2+Name3;
+		back[i].Init(Name4);
+		
+	}
 	
 }
 
@@ -24,13 +34,17 @@ void Game::run(){
 void Game::update(){
 	
 		p.Update();
-back.Update();
+		for(int i=0;i<6;i++){back[i].Update(i);}
+		
 	
 }
 void Game::draw(){
 		win.clear(Color(255,255,255,255));
+		
+		for(int i=0;i<6;i++){back[i].Draw(win);}
 		p.Draw(win);
-		///back.Obj[1].Draw(win);
+		
+		
 		win.display();
 }
 void Game::processEvent(){

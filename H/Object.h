@@ -18,6 +18,7 @@ public:
 	Object();
 	Object(string name);
 	void Draw (RenderWindow& win);
+
 	bool Collide(Object &);
 
 };

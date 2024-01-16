@@ -2,17 +2,21 @@
 #define BACKGROUND_H
 #include "../H/Object.h"
 #include <vector>
+#include "Object.h"
 using namespace std;
 
-class Background {
+class Background:public Object{
 
 	
 private:
-	vector<Object>Obj;
-public:
 	
+public:
 	Background();
-	void Update();
+	Background(string name);
+	void Update(int i);
+	void Init(string name);
+	
+	
 };
 
 #endif

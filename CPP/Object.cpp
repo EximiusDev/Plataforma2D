@@ -13,3 +13,4 @@ void Object::Draw (RenderWindow& win ) {
 bool Object::Collide(Object &){
 	
 };
+

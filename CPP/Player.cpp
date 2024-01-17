@@ -2,12 +2,11 @@
 #include <string>
 using namespace std;
 
-Player::Player():Object("./Textures/1.png") {
+Player::Player():Object() {
 	positionG = {400, 500};
-	//speed = {0,0};
-	// ascel = {10,10};
 	spr.setPosition(positionG);
-	spr.setScale(ScalePlayer);
+	scaleG={0.5,0.5};
+	spr.setScale(scaleG);
 
 	
 }
@@ -36,7 +35,7 @@ void Player::Update(){
 	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&positionG.x<1650){
 		speedG.x=10;
 		positionG.x+=speedG.x;
-		ScalePlayer.x=0.5;
+		scaleG.x=0.5;
 		spr.setPosition(positionG);
 		Walking= true;
 	}
@@ -44,7 +43,7 @@ void Player::Update(){
 	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::A))&&positionG.x>-200){	
 		speedG.x=-10;
 		positionG.x+=speedG.x;
-		ScalePlayer.x=-0.5;
+		scaleG.x=-0.5;
 		spr.setPosition(positionG.x+256,positionG.y);
 		Walking= true;
 	}
@@ -68,7 +67,7 @@ void Player::Update(){
 	string Name3=".png";
 	tex.loadFromFile(Name1+Name2+Name3);
 	spr.setTexture(tex);
-	spr.setScale(ScalePlayer);
+	spr.setScale(scaleG);
 	spr.move(speedG);
 	
 }

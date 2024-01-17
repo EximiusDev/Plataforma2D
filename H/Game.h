@@ -8,6 +8,7 @@
 #include "../H/Background.h"
 #include <vector>
 #include "Background.h"
+#include "Plataform.h"
 using namespace std;
 using namespace sf;
 
@@ -18,6 +19,7 @@ private:
 	Sprite spr;
 	Player p;
 	vector<Background> back;
+	Plataform Pl;
 
 	
 public:

@@ -11,15 +11,15 @@ using namespace sf;
 Game::Game():win(VideoMode(1920,1080),"Ejemplo de SFML"){
 	win.setFramerateLimit(60);
 	
-	back.resize(6);
+	back.resize(12);
 	for(int i=0;i<6;i++) { 
 		string Name1="./Textures/B";
 		string Name2=to_string(i+1);
 		string Name3=".png";
 		string Name4=Name1+Name2+Name3;
 		back[i].Init(Name4);
-		
 	}
+	
 	
 }
 
@@ -34,14 +34,20 @@ void Game::run(){
 void Game::update(){
 	
 		p.Update();
-		for(int i=0;i<6;i++){back[i].Update(i);}
+		Pl.Update();
+		for(int i=0;i<6;i++){back[i].Update(i);
+		}
 		
 	
 }
 void Game::draw(){
 		win.clear(Color(255,255,255,255));
 		
-		for(int i=0;i<6;i++){back[i].Draw(win);}
+for(int i=0;i<6;i++){
+			back[i].Draw(win);
+		
+		}
+		Pl.Draw(win);
 		p.Draw(win);
 		
 		

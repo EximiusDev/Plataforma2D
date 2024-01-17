@@ -11,7 +11,7 @@ Player::Player():Object() {
 	
 }
 
-void Player::Update(){
+void Player::Update(bool Falling){
 	///Faltaria contemplar la colision con el terreno
 	
 	
@@ -19,18 +19,25 @@ void Player::Update(){
 	
 	speedG={0.0,0.0};
 	NumAnim+=1;
-	if ((Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))&&Jumping_Time>0){
-		speedG.y=-10;
+	if(Falling){
+		m_clock.restart();
+	}
+	
+	if(!Falling){
+		speedG.y=+5;
 		positionG.y+=speedG.y;
-		Jumping=true;
+		
+	} 
+	if ((Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))&&Jumping_Time>0&&m_clock.getElapsedTime().asMilliseconds()<500){
+		
+			speedG.y=-10;
+			positionG.y+=speedG.y;
+			Jumping=true;
+		
+		
 		
 	}	
-	if (Keyboard::isKeyPressed(Keyboard::Down)||Keyboard::isKeyPressed(Keyboard::S)){
-		speedG.y=+10;
-		positionG.y+=speedG.y;
-		Jumping=true;
-		
-	}	
+	
 	
 	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&positionG.x<1650){
 		speedG.x=10;
@@ -44,6 +51,7 @@ void Player::Update(){
 		speedG.x=-10;
 		positionG.x+=speedG.x;
 		scaleG.x=-0.5;
+		
 		spr.setPosition(positionG.x+256,positionG.y);
 		Walking= true;
 	}

@@ -20,7 +20,7 @@ private:
 	Player p;
 	vector<Background> back;
 	Plataform Pl;
-
+	bool Falling;
 	
 public:
 		

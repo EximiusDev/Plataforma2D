@@ -8,7 +8,7 @@ private:
 public:
 	Bloque();
 	void Update(int i);
-	void Init(string name,int i);
+	void Init(string name,int i,int Pl);
 };
 
 #endif

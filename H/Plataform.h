@@ -7,11 +7,10 @@ public:
 	Plataform();
 	void Draw(RenderWindow & win);
 	void Update();
+	Bloque getBloq(int i);
 private:
 	vector<Bloque>Plat1;
-	vector<Bloque>Plat2;
-	vector<Bloque>Plat3;
-	vector<Bloque>Plat4;
+	
 	
 	
 };

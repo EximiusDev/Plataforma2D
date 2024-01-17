@@ -6,6 +6,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include "../H/Game.h"
 #include "../H/Background.h"
+#include <iostream>
 using namespace sf;
 /// MEJORAR EL BACJGROUND DE ACA
 Game::Game():win(VideoMode(1920,1080),"Ejemplo de SFML"){
@@ -32,9 +33,16 @@ void Game::run(){
 	
 }}
 void Game::update(){
+	Falling=false;
+	for(int i=0;i<7;i++) { 
+		if(Pl.getBloq(i).Collide(p)){
+			Falling=true;
+			
+		}}
+	Pl.Update();
+	p.Update(Falling);
 	
-		p.Update();
-		Pl.Update();
+		
 		for(int i=0;i<6;i++){back[i].Update(i);
 		}
 		

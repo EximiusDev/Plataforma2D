@@ -2,18 +2,21 @@
 #define PLAYER_H
 #include <SFML/Window/Keyboard.hpp>
 #include "Object.h"
+#include <ctime>
+using namespace std;
 using namespace sf;
 class Player: public Object{
 private:
+	Clock m_clock;
 	string Name1;
 	int NumAnim=1;
-	float x_position=400;
-	float y_position=500;
-	bool Walking;
+	bool Walking=false;
+	bool Jumping=false;
 	int Jumping_Time=40;
+	
 public:
 	Player();
-	void Update();
+	void Update(bool Falling);
 };	
 
 #endif

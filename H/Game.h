@@ -8,6 +8,7 @@
 #include "../H/Background.h"
 #include <vector>
 #include "Background.h"
+#include "Plataform.h"
 using namespace std;
 using namespace sf;
 
@@ -17,6 +18,9 @@ private:
 	Texture textur;
 	Sprite spr;
 	Player p;
+	vector<Background> back;
+	Plataform Pl;
+	bool Falling;
 	
 public:
 		

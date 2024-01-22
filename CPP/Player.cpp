@@ -11,7 +11,7 @@ Player::Player():Object() {
 	
 }
 
-void Player::Update(bool Falling){
+void Player::Update(bool on_Air){
 	///Faltaria contemplar la colision con el terreno
 	
 	
@@ -19,20 +19,31 @@ void Player::Update(bool Falling){
 	
 	speedG={0.0,0.0};
 	NumAnim+=1;
-	if(Falling){
+	if(!on_Air){
 		m_clock.restart();
+		jumping_Animation=false;
+		on_Air_Falling=false;
+		on_Air_Jumping=false;
 	}
 	
-	if(!Falling){
+	if(on_Air&&!on_Air_Jumping){
 		speedG.y=+5;
 		positionG.y+=speedG.y;
-		
+		jumping_Animation=true;
+		on_Air_Falling=true;
 	} 
-	if ((Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))&&Jumping_Time>0&&m_clock.getElapsedTime().asMilliseconds()<500){
+	if (m_clock.getElapsedTime().asMilliseconds()>=500||!Keyboard::isKeyPressed(Keyboard::Up)&&!Keyboard::isKeyPressed(Keyboard::W)&&!Keyboard::isKeyPressed(Keyboard::Space))
+	{
+		on_Air_Falling=true;
+		on_Air_Jumping=false;
+	}
+	
+	if (!on_Air_Falling&&(Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))){
 		
 			speedG.y=-10;
 			positionG.y+=speedG.y;
-			Jumping=true;
+		jumping_Animation=true;
+			on_Air_Jumping=true;
 		
 		
 		
@@ -43,7 +54,7 @@ void Player::Update(bool Falling){
 		speedG.x=10;
 		positionG.x+=speedG.x;
 		scaleG.x=0.5;
-		spr.setPosition(positionG);
+		spr.setPosition(positionG.x,positionG.y);
 		Walking= true;
 	}
 	
@@ -56,12 +67,11 @@ void Player::Update(bool Falling){
 		Walking= true;
 	}
 	
-	if(NumAnim>20||(NumAnim>8&&Jumping)){
+	if(NumAnim>20||(NumAnim>8&&jumping_Animation)){
 		NumAnim=1;
 	}
-	if(Jumping){
+	if(jumping_Animation){
 		Name1="./Textures/J";
-		Jumping = false;
 	}else{
 		if(Walking){
 			Name1="./Textures/Walk";

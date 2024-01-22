@@ -5,10 +5,10 @@
 #include <SFML\Graphics\Texture.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 #include "Player.h"
-#include "../H/Background.h"
 #include <vector>
 #include "Background.h"
-#include "Plataform.h"
+#include "Platform.h"
+#include "Parallax.h"
 using namespace std;
 using namespace sf;
 
@@ -17,10 +17,10 @@ private:
 	RenderWindow win;
 	Texture textur;
 	Sprite spr;
-	Player p;
-	vector<Background> back;
-	Plataform Pl;
-	bool Falling;
+	Player player;
+	Parallax background_Parallax;
+	Platform plat;
+	bool on_Air;
 	
 public:
 		

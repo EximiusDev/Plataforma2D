@@ -11,12 +11,13 @@ private:
 	string Name1;
 	int NumAnim=1;
 	bool Walking=false;
-	bool Jumping=false;
-	int Jumping_Time=40;
+	bool jumping_Animation=false;
+	bool on_Air_Jumping;
+	bool on_Air_Falling;
 	
 public:
 	Player();
-	void Update(bool Falling);
+	void Update(bool on_Air);
 };	
 
 #endif

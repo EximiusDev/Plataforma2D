@@ -1,8 +1,8 @@
 
-#include "../H/Plataform.h"
+#include "../H/Platform.h"
 ///Aca hay que hacerlo con puntero
 ///Podemos hacer que apraezcan con un timer
-Plataform::Plataform() {
+Platform::Platform() {
 	Plat1.resize(7);
 	
 
@@ -16,17 +16,17 @@ Plataform::Plataform() {
 	
 	}
 }
-void Plataform::Update(){
+void Platform::Update(){
 	for(int i=0;i<7;i++) { 
 		Plat1[i].Update(3);
 		
 	}
 }
-Bloque Plataform::getBloq(int i){
+Bloque Platform::getBloq(int i){
 	return Plat1[i];
 }
 
-void Plataform::Draw(RenderWindow & win){
+void Platform::Draw(RenderWindow & win){
 	for(int i=0;i<7;i++) { 
 		Plat1[i].Draw(win);
 		

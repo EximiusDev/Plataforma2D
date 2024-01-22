@@ -1,10 +1,10 @@
-#ifndef PLATAFORM_H
-#define PLATAFORM_H
+#ifndef PLATFORM_H
+#define PLATFORM_H
 #include "Bloque.h"
 
-class Plataform {
+class Platform {
 public:
-	Plataform();
+	Platform();
 	void Draw(RenderWindow & win);
 	void Update();
 	Bloque getBloq(int i);

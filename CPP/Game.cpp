@@ -1,19 +1,17 @@
-
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include "../H/Game.h"
-#include "../Background.h"
+#include "../H/Background.h"
+#include <iostream>
 using namespace sf;
-
-//Game::Game():win(VideoMode(1920,1080),"Juego Plataformero"){
-Game::Game():win(VideoMode(1280,720),"Juego Plataformero"){
+///1920,1080
+Game::Game():win(VideoMode(1280,720),"Juego Final P.O.O, Francisco Maldonado y Sandro Otero"){
 	win.setFramerateLimit(60);
-	textur.loadFromFile("");
-	spr.setTexture(textur);
-	spr.setPosition(175, 130);
+	
+	
+	
 }
 
 void Game::run(){
@@ -25,23 +23,41 @@ void Game::run(){
 	
 }}
 void Game::update(){
+	on_Air=true;
+	for(int i=0;i<7;i++) { 
+		
+		
+		if(plat.getBloq(i).Collide(player))
+		{
+			on_Air=false;
+			cout<<i<<" Colision"<<endl;
+		}else cout<<i<<" NO Colision"<<endl;
+	}
 	
-p.Update();
-
+	
+	plat.Update();
+	player.Update(on_Air);
+	//background_Parallax.Update();
+		
 	
 }
 void Game::draw(){
 		win.clear(Color(255,255,255,255));
-		//for(int i=0;i<6;i++) { back[i].Background("B" + (i+1));}
 		
-		p.Draw(win);
+
+		//background_Parallax.Draw(win);
+		plat.Draw(win);
+		player.Draw(win);
 		
-		win.draw(spr);
+		
 		win.display();
 }
+
+
+
 void Game::processEvent(){
 	Event e;
 	while(win.pollEvent(e)) {
-		if(e.type == Event::Closed)
+	if(e.type == Event::Closed)
 	win.close();	
 						}}

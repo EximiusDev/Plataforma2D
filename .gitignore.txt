@@ -1,1 +1,1 @@
-/Debug_Win32/ProyectoFinal.exe
+./Debug_Win32/ProyectoFinal.exe

@@ -9,7 +9,8 @@ using namespace std;
 using namespace sf;
 class Object {
 protected:
-Vector2f scaleG={12,12};
+	///12,12
+Vector2f scaleG={6,6};
 Vector2f speedG = {1,0}; //Velocidad general
 Vector2f positionG = {0,0}; 
 Vector2f acelG = {0,0};

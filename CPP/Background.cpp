@@ -2,7 +2,8 @@
 #include "../H/Object.h"
 Background::Background(){
 	spr.setPosition(0,0);
-	spr.setScale(6,6);
+	///6,6
+	spr.setScale(4,4);
 }
 
 void Background::Update(int i){

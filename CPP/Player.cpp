@@ -3,9 +3,11 @@
 using namespace std;
 
 Player::Player():Object() {
-	positionG = {400, 500};
+	///400, 500
+	positionG = {200, 250};
 	spr.setPosition(positionG);
-	scaleG={0.5,0.5};
+	///0.5
+	scaleG={0.4,0.4};
 	spr.setScale(scaleG);
 
 	
@@ -19,11 +21,15 @@ void Player::Update(bool on_Air){
 	
 	speedG={0.0,0.0};
 	NumAnim+=1;
-	if(!on_Air){
+	
+	
+	if(!on_Air&&positionG.x>=-85){
 		m_clock.restart();
 		jumping_Animation=false;
 		on_Air_Falling=false;
 		on_Air_Jumping=false;
+		speedG.x=-3;
+		positionG.x+=speedG.x;
 	}
 	
 	if(on_Air&&!on_Air_Jumping){
@@ -58,12 +64,16 @@ void Player::Update(bool on_Air){
 		Walking= true;
 	}
 	
-	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::A))&&positionG.x>-200){	
-		speedG.x=-10;
-		positionG.x+=speedG.x;
-		scaleG.x=-0.5;
+	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::A))){	
+		if(positionG.x>-85){ 
+			speedG.x=-10;
+			positionG.x+=speedG.x;
+			scaleG.x=-0.5;
+			spr.setPosition(positionG.x+256,positionG.y);
+		}
 		
-		spr.setPosition(positionG.x+256,positionG.y);
+		
+		
 		Walking= true;
 	}
 	

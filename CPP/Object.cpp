@@ -11,8 +11,9 @@ void Object::Draw (RenderWindow& win ) {
 	win.draw(spr);
 }
 bool Object::Collide(Object & O){
-	auto r1= this->spr.getGlobalBounds();
-	auto r2= O.spr.getGlobalBounds();
+	FloatRect r1= this->spr.getGlobalBounds();
+	FloatRect r2= O.spr.getGlobalBounds();
+	
 	return r1.intersects(r2);
 }; 
 

@@ -8,8 +8,8 @@
 #include "../H/Background.h"
 #include <iostream>
 using namespace sf;
-
-Game::Game():win(VideoMode(1920,1080),"Ejemplo de SFML"){
+///1920,1080
+Game::Game():win(VideoMode(1280,720),"Juego Final P.O.O, Francisco Maldonado y Sandro Otero"){
 	win.setFramerateLimit(60);
 	
 	

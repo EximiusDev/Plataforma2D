@@ -10,7 +10,7 @@ Platform::Platform() {
 		string Name1="./Textures/Tierra";
 		string Name2=to_string(1);
 		string Name3=".png";
-		string Name4=Name1+Name2+Name3;
+		string Name4=Name1+Name3;
 		Plat1[i].Init(Name4,i,1);
 		
 	

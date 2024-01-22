@@ -58,11 +58,15 @@ void Player::Update(bool on_Air){
 	}	
 	
 	
-	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&positionG.x<1650){
-		speedG.x=10;
-		positionG.x+=speedG.x;
-		scaleG.x=0.5;
-		spr.setPosition(positionG.x,positionG.y);
+		if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&positionG.x<1650){
+			speedG.x=10;
+			positionG.x+=speedG.x;
+			if (scaleG.x<0){ 
+				scaleG.x= -1*scaleG.x; //scaleG.x=0.5;
+				spr.setPosition(positionG.x,positionG.y);
+			}
+			else spr.setPosition(positionG);
+			
 		Walking= true;
 	}
 	
@@ -70,8 +74,12 @@ void Player::Update(bool on_Air){
 		if(positionG.x>-85){ 
 			speedG.x=-10;
 			positionG.x+=speedG.x;
-			scaleG.x=-0.5;
-			spr.setPosition(positionG.x+256,positionG.y);
+			if (scaleG.x>0){
+				scaleG.x= -1*scaleG.x; //scaleG.x=-0.5;
+				//spr.setPosition(positionG.x+256,positionG.y);
+				spr.setPosition(positionG.x+100,positionG.y);
+			}
+			//else //spr.setPosition(positionG);
 		}
 		
 		

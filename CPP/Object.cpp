@@ -14,6 +14,7 @@ bool Object::Collide(Object & O){
 	FloatRect r1= this->spr.getGlobalBounds();
 	FloatRect r2= O.spr.getGlobalBounds();
 	
+	
 	return r1.intersects(r2);
 }; 
 

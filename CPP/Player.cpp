@@ -13,7 +13,7 @@ Player::Player():Object() {
 	
 }
 
-void Player::Update(bool on_Air){
+void Player::Update(bool on_Air,bool collide_With_wall_left,bool collide_With_wall_right){
 	///Faltaria contemplar la colision con el terreno
 	
 	
@@ -28,7 +28,7 @@ void Player::Update(bool on_Air){
 		jumping_Animation=false;
 		on_Air_Falling=false;
 		on_Air_Jumping=false;
-		speedG.x=-3;
+		speedG.x=-0;
 		positionG.x+=speedG.x;
 	}
 	
@@ -43,33 +43,34 @@ void Player::Update(bool on_Air){
 		on_Air_Falling=true;
 		on_Air_Jumping=false;
 	}
+if (!on_Air_Falling&&(Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))){
 	
-	if (!on_Air_Falling&&(Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))){
-		
-			speedG.y=-10;
-			positionG.y+=speedG.y;
-		jumping_Animation=true;
-			on_Air_Jumping=true;
-		
-		
-		
-	}	
+	speedG.y=-10;
+	positionG.y+=speedG.y;
+	jumping_Animation=true;
+	on_Air_Jumping=true;
 	
 	
-	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&positionG.x<1650){
+	
+}	
+
+	
+	
+
+	if ((Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::D))&&positionG.x<1650&&!collide_With_wall_right){
 		speedG.x=10;
 		positionG.x+=speedG.x;
-		scaleG.x=0.5;
+		scaleG.x=0.4;
 		spr.setPosition(positionG.x,positionG.y);
 		Walking= true;
 	}
 	
-	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::A))){	
+	if ((Keyboard::isKeyPressed(Keyboard::Left)||Keyboard::isKeyPressed(Keyboard::A))&&!collide_With_wall_left){	
 		if(positionG.x>-85){ 
 			speedG.x=-10;
 			positionG.x+=speedG.x;
-			scaleG.x=-0.5;
-			spr.setPosition(positionG.x+256,positionG.y);
+			scaleG.x=-0.4;
+			spr.setPosition(positionG.x+(spr.getLocalBounds().width*-scaleG.x),positionG.y);
 		}
 		
 		

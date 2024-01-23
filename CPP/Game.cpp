@@ -24,13 +24,24 @@ void Game::run(){
 }}
 void Game::update(){
 	on_Air=true;
-	for(int i=0;i<7;i++) { 
+	collide_With_wall_left=false;
+	collide_With_wall_right=false;
+	
+	for(int i=0;i<4;i++) { 
 		if(plat.getBloq(i).Collide(player)){
-			on_Air=false;}}
+			on_Air=false;}
+			if(plat.getBloq(i).CollideWithWallright(player)){
+			collide_With_wall_right=true;
+			}
+			if(plat.getBloq(i).CollideWithWallleft(player)){
+				collide_With_wall_left=true;
+			}
+		}
 	
 	
 	plat.Update();
-	player.Update(on_Air);
+	player.Update(on_Air , collide_With_wall_left,collide_With_wall_right);
+
 	background_Parallax.Update();
 		
 	

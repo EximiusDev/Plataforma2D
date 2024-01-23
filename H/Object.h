@@ -14,7 +14,7 @@ protected:
 Vector2f scaleG={6,6};
 
 
-Vector2f speedG = {1,0}; //Velocidad general
+Vector2f speedG = {0,0}; //Velocidad general
 Vector2f positionG = {0,0}; 
 Vector2f acelG = {0,0};
 Texture tex;
@@ -24,6 +24,9 @@ public:
 	Object(string name);
 	void Draw (RenderWindow& win);
 	bool Collide(Object & O);
+	bool CollideWithWallleft(Object & O);
+	bool CollideWithWallright(Object & O);
+	
 
 };
 

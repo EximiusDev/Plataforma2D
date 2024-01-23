@@ -3,6 +3,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include "Object.h"
 #include <ctime>
+#include "Platform.h"
 using namespace std;
 using namespace sf;
 class Player: public Object{
@@ -17,7 +18,8 @@ private:
 	
 public:
 	Player();
-	void Update(bool on_Air);
+	void Update(bool on_Air, bool collide_With_wall_left,bool collide_With_wall_right);
+	
 };	
 
 #endif

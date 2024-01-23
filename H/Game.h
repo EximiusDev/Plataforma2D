@@ -21,7 +21,8 @@ private:
 	Parallax background_Parallax;
 	Platform plat;
 	bool on_Air;
-	
+	bool collide_With_wall_right;
+	bool collide_With_wall_left;
 public:
 		
 	Game();

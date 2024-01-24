@@ -3,8 +3,8 @@
 #include "../H/Object.h"
 
 Bloque::Bloque():Object(){
+	scaleG={6,6};
 	spr.setScale(scaleG);
-	
 }
 
 void Bloque::Update(int i){
@@ -16,13 +16,12 @@ void Bloque::Update(int i){
 	}
 	
 }
-void Bloque::Init(string name,int i,int Pl){ ///Pl indica el el numero de plataforma
+void Bloque::Init(string name,int i,int Pl){ 
 	
 	tex.loadFromFile(name);
 	spr.setTexture(tex);
-	///{i*200,900}
-	positionG={i*144,450-(i*100)};
+	positionG={i*144,500};
 	spr.setPosition(positionG);
-	 ///Estos valores dependen de la resolucion para hacer que dejen de ser valores magicos debemos calcular el cambio de resolucion en "object" (Solo para valores menores a 6)
+
 		
 }

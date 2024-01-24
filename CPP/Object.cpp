@@ -16,7 +16,7 @@ bool Object::Collide(Object & O){
 	FloatRect r1= this->spr.getGlobalBounds();
 	FloatRect r2= O.spr.getGlobalBounds();
 
-	if(r2.top+r2.height > r1.top && r2.left + r2.width > r1.left && r2.left  < r1.left+r1.width &&r2.top+r2.height < r1.top + 20){
+	if(r2.top+r2.height > r1.top && r2.left + r2.width > r1.left && r2.left  < r1.left+r1.width &&r2.top+r2.height < r1.top + 20){ //Calcula la interseccion solo con la parte de arriba del bloque
 
 		
 		return true;}
@@ -35,7 +35,7 @@ bool Object::Collide(Object & O){
 bool Object::CollideWithWallright(Object & O){
 	FloatRect r1= this->spr.getGlobalBounds();
 	FloatRect r2= O.spr.getGlobalBounds();
-	if(r1.intersects(r2)&&r2.top+r2.height> r1.top+22){
+	if(r1.intersects(r2)&&r2.top+r2.height> r1.top+22){ //Si se intertan y el personaje esta mas abajo entonces devolver verdadero
 		return true;
 	}
 	
@@ -44,7 +44,7 @@ bool Object::CollideWithWallright(Object & O){
 bool Object::CollideWithWallleft(Object & O){
 	FloatRect r1= this->spr.getGlobalBounds();
 	FloatRect r2= O.spr.getGlobalBounds();
-	if(r1.intersects(r2)&&r2.top+r2.height > r1.top+22){
+	if(r1.intersects(r2)&&r2.top+r2.height > r1.top+22){ //Si se intertan y el personaje esta mas abajo entonces devolver verdadero
 		return true;
 	}
 	return false;

@@ -7,8 +7,12 @@
 #include <iostream>
 using namespace sf;
 
-Game::Game():win(VideoMode(1280,720),"Juego Final P.O.O, Francisco Maldonado y Sandro Otero"){
+//Game::Game():win(VideoMode(1280,720),"Juego Final P.O.O, Francisco Maldonado y Sandro Otero"){
+Game::Game(int resolution_x, int resolution_y):win(VideoMode( resolution_x, resolution_y),"Juego Final P.O.O, Francisco Maldonado y Sandro Otero"){
+//Game::Game(Vector2i resolutionWindows):win(VideoMode( resolutionWindows.x, resolutionWindows.y),"Juego Final P.O.O, Francisco Maldonado y Sandro Otero"){
 	win.setFramerateLimit(60);
+	//resolutionWin   = resolutionWindows;
+	resolutionWin.x = resolution_x;		resolutionWin.y = resolution_y;
 }
 
 void Game::run(){
@@ -24,16 +28,17 @@ void Game::update(){
 	collide_With_wall_left=false;
 	collide_With_wall_right=false;
 	
-	for(int i=0;i<4;i++) { 
+	for(int i=0;i<plat.Get_Cant_Plat();i++) { 
 		if(plat.getBloq(i).Collide(player)){
-			on_Air=false;}
-			if(plat.getBloq(i).CollideWithWallright(player)){
-			collide_With_wall_right=true;
-			}
-			if(plat.getBloq(i).CollideWithWallleft(player)){
-				collide_With_wall_left=true;
-			}
+			on_Air=false;
 		}
+		if(plat.getBloq(i).CollideWithWallright(player)){
+			collide_With_wall_right=true;
+		}
+		if(plat.getBloq(i).CollideWithWallleft(player)){
+			collide_With_wall_left=true;
+		}
+	}
 	
 	
 	plat.Update();

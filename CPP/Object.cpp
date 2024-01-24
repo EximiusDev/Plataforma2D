@@ -19,7 +19,8 @@ bool Object::Collide(Object & O){
 	if(r2.top+r2.height > r1.top && r2.left + r2.width > r1.left && r2.left  < r1.left+r1.width &&r2.top+r2.height < r1.top + 20){ //Calcula la interseccion solo con la parte de arriba del bloque
 
 		
-		return true;}
+		return true;
+	}
 	
 	
 		

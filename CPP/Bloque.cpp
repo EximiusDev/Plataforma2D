@@ -11,8 +11,8 @@ void Bloque::Update(int i){
 	spr.move(speedG.x*-i,speedG.y);
 	positionG.x+=speedG.x*-i;
 	if(positionG.x<=-16*scaleG.x){
-		spr.setPosition(1920,positionG.y);
-		positionG.x=1920;
+		spr.setPosition(resolutionG.x,positionG.y);
+		positionG.x=resolutionG.x;
 	}
 	
 }

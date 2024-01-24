@@ -15,24 +15,30 @@ using namespace sf;
 class Game {
 private:
 	RenderWindow win;
+	
+	/*
 	Texture textur;
-	Sprite spr;
+	Sprite spr;*/
+	
 	Player player;
 	Parallax background_Parallax;
 	Platform plat;
+	
 	bool on_Air;
 	bool collide_With_wall_right;
 	bool collide_With_wall_left;
+	
+	Vector2i resolutionWin;
+	
 public:
 		
+	Game(int resolution_x, int resolution_y);
+	//Game(Vector2i resolutionWindows);
 	Game();
 	void run();
 	void update();
 	void draw();
 	void processEvent();
-	
-
-	
 
 	
 };

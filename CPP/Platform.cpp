@@ -3,10 +3,11 @@
 ///Aca hay que hacerlo con puntero
 ///Podemos hacer que apraezcan con un timer
 Platform::Platform() {
-	Plat1.resize(size);
+	cant_plat = 6;
+	Plat1.resize(cant_plat);
 	
 
-	for(int i=0;i<size;i++) { 
+	for(int i=0;i<cant_plat;i++) { 
 		string Name1="./Textures/Tierra";
 		string Name2=to_string(1);
 		string Name3=".png";
@@ -17,8 +18,8 @@ Platform::Platform() {
 	}
 }
 void Platform::Update(){
-	for(int i=0;i<size;i++) { 
-		Plat1[i].Update(3);
+	for(int i=0;i<cant_plat;i++) { 
+		Plat1[i].Update(3); /// Ver
 		
 	}
 }
@@ -27,9 +28,12 @@ Bloque Platform::getBloq(int i){
 }
 
 void Platform::Draw(RenderWindow & win){
-	for(int i=0;i<size;i++) { 
+	for(int i=0;i<cant_plat;i++) { 
 		Plat1[i].Draw(win);
 		
 	}
-	
+}
+
+int Platform::Get_Cant_Plat(){
+	return cant_plat;
 }

@@ -2,16 +2,27 @@
 #include <string>
 using namespace std;
 
-Player::Player():Object("./Textures/Tierra1.png") {
+Player::Player():Object("./Textures/Tierra.png") {
 	///400, 500
-	positionG = {200, 250};
+	positionG = {120, 250}; /// cambiar por valores relativos
+	margen = {0, 0}; 
+	positionP = positionG-margen;
 	spr.setPosition(positionG);
 	///0.5
-	scaleG={0.4*10,0.4*10};
-	spr.setScale(scaleG);
+	scaleG={0.5,0.5}; /// cambiar por valores relativos
+	spr.setScale(scaleG.x*10,scaleG.y*10);
 
 	//spr.setTexture();
 	//spr.setTextureRect(scaleG);
+	
+	texP.loadFromFile("./Textures/1.png");
+	sprP.setTexture(texP);
+	sprP.setPosition(positionP); /// cambiar por valores relativos
+	///sprP.setScale(scaleG);
+	scaleP = {5,5}; /// cambiar por valores relativos
+	sprP.setScale(scaleP);
+	
+	///spr.setColor(Color(255,255,255,0));
 }
 
 void Player::Update(bool on_Air){
@@ -63,9 +74,12 @@ void Player::Update(bool on_Air){
 			positionG.x+=speedG.x;
 			if (scaleG.x<0){ 
 				scaleG.x= -1*scaleG.x; //scaleG.x=0.5;
-				spr.setPosition(positionG.x,positionG.y);
+				positionG.x= positionG.x-150;
 			}
-			else spr.setPosition(positionG);
+			else {
+				spr.setPosition(positionG);
+				//sprP.setPosition(positionG);
+			}
 			
 		Walking= true;
 	}
@@ -77,16 +91,17 @@ void Player::Update(bool on_Air){
 			if (scaleG.x>0){
 				scaleG.x= -1*scaleG.x; //scaleG.x=-0.5;
 				//spr.setPosition(positionG.x+256,positionG.y);
-				spr.setPosition(positionG.x+100,positionG.y);
+				positionG.x = positionG.x+150; ///hacer relativa al tamnio
 			}
-			//else //spr.setPosition(positionG);
 		}
 		
 		
 		
 		Walking= true;
 	}
-	/*
+	
+	///ANIMACION
+	
 	if(NumAnim>20||(NumAnim>8&&jumping_Animation)){
 		NumAnim=1;
 	}
@@ -103,15 +118,25 @@ void Player::Update(bool on_Air){
 	}
 	string Name2=to_string(NumAnim);
 	string Name3=".png";
-	tex.loadFromFile(Name1+Name2+Name3);
+	texP.loadFromFile(Name1+Name2+Name3);
 	
-	spr.setTexture(tex);
-	*/
-	///IntRect aux_rect = spr.getGlobalBounds();
+	sprP.setTexture(texP);
 	
-	///spr.setTextureRect(aux_rect);
+	/// VARIABLES
 	
-	spr.setScale(scaleG);
+	spr.setPosition(positionG);
+	positionP = positionG-margen;
+	sprP.setPosition(positionP);
+	
+	spr.setScale(scaleG.x*10,scaleG.y*10);
 	spr.move(speedG);
 	
+	sprP.setScale(scaleG.x,scaleG.y);
+	sprP.move(speedG);
+	
+	//sprP.setPosition(80,90);
 }
+void Player::Draw_spr(RenderWindow& win){
+	win.draw(sprP);
+}
+

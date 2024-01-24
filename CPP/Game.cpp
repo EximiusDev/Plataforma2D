@@ -24,7 +24,7 @@ void Game::run(){
 }}
 void Game::update(){
 	on_Air=true;
-	for(int i=0;i<7;i++) { 
+	for(int i=0;i<plat.Get_Cant_Plat();i++) { 
 		
 		
 		if(plat.getBloq(i).Collide(player))
@@ -48,7 +48,9 @@ void Game::draw(){
 		//background_Parallax.Draw(win);
 		plat.Draw(win);
 		player.Draw(win);
-		
+		player.Draw_spr(win);
+		//win.draw(player.Draw_spr);
+		//player.Draw_spr.Draw(win);
 		
 		win.display();
 }

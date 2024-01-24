@@ -8,10 +8,11 @@ public:
 	void Draw(RenderWindow & win);
 	void Update();
 	Bloque getBloq(int i);
+	int Get_Cant_Plat();
 	
-	int size = 10; /// tamanio eliminar o cambiar logica
 private:
 	vector<Bloque>Plat1;
+	int cant_plat; /// tamanio eliminar o cambiar logica
 	
 	
 	

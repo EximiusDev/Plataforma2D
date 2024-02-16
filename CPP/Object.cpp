@@ -22,14 +22,7 @@ bool Object::Collide(Object & O){
 		return true;
 	}
 	
-	
-		
 			return false;
-	
-		
-	
-	
-
 }; 
 
 

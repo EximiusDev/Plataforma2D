@@ -20,23 +20,24 @@ void Game::run(){
 		processEvent();
 		update();
 		draw();
-		
-	
-}}
+	}
+}
 void Game::update(){
 	on_Air=true;
 	collide_With_wall_left=false;
 	collide_With_wall_right=false;
 	
-	for(int i=0;i<plat.Get_Cant_Plat();i++) { 
-		if(plat.getBloq(i).Collide(player)){
-			on_Air=false;
-		}
-		if(plat.getBloq(i).CollideWithWallright(player)){
-			collide_With_wall_right=true;
-		}
-		if(plat.getBloq(i).CollideWithWallleft(player)){
-			collide_With_wall_left=true;
+	for(int i=0;i<plat.Get_cant_bloq_plat_y();i++) { 
+		for(int j=0;j<plat.Get_cant_bloq_plat(i);j++) { 
+			if(plat.getBloq(j,i).Collide(player)){
+				on_Air=false;
+			}
+			if(plat.getBloq(i,j).CollideWithWallright(player)){
+				collide_With_wall_right=true;
+			}
+			if(plat.getBloq(i,j).CollideWithWallleft(player)){
+				collide_With_wall_left=true;
+			}
 		}
 	}
 	

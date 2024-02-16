@@ -6,8 +6,8 @@ using namespace std;
 Player::Player():Object() {
 	
 	///Cambio de variables
-	positionG = {resolutionG.x*0.2, resolutionG.y*0.5};
-	scaleG={resolutionG.x*0.0003,resolutionG.x*0.0003};
+	positionG = {resolutionG.x*0.2f, resolutionG.y*0.5f};
+	scaleG={resolutionG.x*0.0003f,resolutionG.x*0.0003f};
 	
 	///Modificacion del spr
 	spr.setPosition(positionG);
@@ -24,6 +24,7 @@ void Player::Update(bool on_Air,bool collide_With_wall_left,bool collide_With_wa
 		on_Air_Falling=false; // No esta activada la caida 
 		on_Air_Jumping=false; // No esta activado el salto 
 		speedG.x=-3; //La plataforma traslada al jugador
+		///speedG=worldspeed; //La plataforma traslada al jugador
 		positionG.x+=speedG.x;
 	}
 	
@@ -37,6 +38,7 @@ void Player::Update(bool on_Air,bool collide_With_wall_left,bool collide_With_wa
 	if (jump_clock.getElapsedTime().asMilliseconds()>=500||!Keyboard::isKeyPressed(Keyboard::Up)&&!Keyboard::isKeyPressed(Keyboard::W)&&!Keyboard::isKeyPressed(Keyboard::Space)&&on_Air){ //Si paso el tiempo O si no fueron apretadas las tecla de salto en el aire...
 		on_Air_Falling=true; //Se activa la caida
 		on_Air_Jumping=false; //Se apaga la animacion de salto
+		//speedG.y=0;
 	}
 
 	if (!on_Air_Falling&&(Keyboard::isKeyPressed(Keyboard::Up)||Keyboard::isKeyPressed(Keyboard::W)||Keyboard::isKeyPressed(Keyboard::Space))){ // Si no esta cayendo y se apreto la tecla de salto...
@@ -74,7 +76,10 @@ void Player::Update(bool on_Air,bool collide_With_wall_left,bool collide_With_wa
 	spr.setTexture(tex);
 	spr.setScale(scaleG);
 	spr.move(speedG);
-	speedG={0.0,0.0};
+	//positionG+=speedG;
+	speedG={-0.0,0.0}; /// la velocidad por defecto es la velocidad del mundo
+	//speedG = worldspeed; /// la velocidad por defecto es la velocidad del mundo
+	
 	
 }
 string Player::Animation(){

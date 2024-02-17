@@ -6,7 +6,7 @@ Platform::Platform() {
 	cant_bloq_plat_y = 3;
 	cant_bloq_plat = 24; /// maximo 32 = 16*2 =8*4 : es decir 4 plataformas prediseñas mostrandose todo el tiempo
 	
-	Plat0.resize(32);
+	Plat0.resize(16);
 	Plat1.resize(cant_bloq_plat);
 	Plat2.resize(32);
 	
@@ -24,7 +24,7 @@ Platform::Platform() {
 		for(int i=0;i<this->Get_cant_bloq_plat(j);i++) {
 			switch(j){
 			case 0:
-				Plat0[i].Init(Name4,i,8);
+				Plat0[i].Init(Name4,i,3);
 				break;
 			case 1:
 				Plat1[i].Init(Name4,i,6);

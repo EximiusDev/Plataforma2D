@@ -27,9 +27,10 @@ bool Object::Collide(Object & O){
 
 
 bool Object::CollideWithWallright(Object & O){
-	FloatRect r1= this->spr.getGlobalBounds();
-	FloatRect r2= O.spr.getGlobalBounds();
+	FloatRect r1= this->spr.getGlobalBounds(); //r1 : bloq
+	FloatRect r2= O.spr.getGlobalBounds(); //r2 : player
 	if(r1.intersects(r2)&&r2.top+r2.height> r1.top+22){ //Si se intertan y el personaje esta mas abajo entonces devolver verdadero
+	//by Fran: //if(r1.intersects(r2)&&r1.left+r1.width> r2.left){ //Si se intertan y el personaje esta mas abajo entonces devolver verdadero
 		return true;
 	}
 	

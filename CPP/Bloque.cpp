@@ -17,11 +17,14 @@ void Bloque::Update(int i){
 	}
 }
 void Bloque::Init(string name,int i,int j){ 
-	
 	tex.loadFromFile(name);
 	spr.setTexture(tex);
 	positionG={i*tamanio_pixeles*1.f,j*tamanio_pixeles*1.f};
 	spr.setPosition(positionG);
-
-	
+}
+void Bloque::Init(Texture & textu,int i,int j){ 
+	tex = textu;
+	spr.setTexture(tex);
+	positionG={i*tamanio_pixeles*1.f,j*tamanio_pixeles*1.f};
+	spr.setPosition(positionG);
 }

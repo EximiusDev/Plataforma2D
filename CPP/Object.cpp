@@ -12,7 +12,7 @@ Object::Object(string name) {
 void Object::Draw (RenderWindow& win ) {
 	win.draw(spr);
 }
-bool Object::Collide(Object & O){
+bool Object::CollideUp(Object & O){
 	FloatRect r1= this->spr.getGlobalBounds();
 	FloatRect r2= O.spr.getGlobalBounds();
 
@@ -29,7 +29,7 @@ bool Object::Collide(Object & O){
 bool Object::CollideWithWallright(Object & O){
 	FloatRect r1= this->spr.getGlobalBounds(); //r1 : bloq
 	FloatRect r2= O.spr.getGlobalBounds(); //r2 : player
-	if(r1.intersects(r2)&&r2.top+r2.height> r1.top+22){ //Si se intertan y el personaje esta mas abajo entonces devolver verdadero
+	if(r1.intersects(r2)&&r1.top+r1.height> r2.top+22){ //Si se intertan y el personaje esta mas abajo entonces devolver verdadero
 	//by Fran: //if(r1.intersects(r2)&&r1.left+r1.width> r2.left){ //Si se intertan y el personaje esta mas abajo entonces devolver verdadero
 		return true;
 	}
@@ -44,3 +44,12 @@ bool Object::CollideWithWallleft(Object & O){
 	}
 	return false;
 }
+
+
+bool Object::Collide(Object & O){
+	FloatRect r1= this->spr.getGlobalBounds();
+	FloatRect r2= O.spr.getGlobalBounds();
+	//r1.left = r1.left +100; /// cambia la posicion del objeto r1 (corre la hitbox 100 a la izquierda)
+	
+	return r1.intersects(r2);
+}; 

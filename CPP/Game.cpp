@@ -30,24 +30,29 @@ void Game::update(){
 	for(int i=0;i<plat.Get_cant_bloq_plat_y();i++) { 
 		for(int j=0;j<plat.Get_cant_bloq_plat(i);j++) { 
 			if(plat.getBloq(j,i).Collide(player)){
-				on_Air=false;
-				//cout<<"Colision superior["<<i<<"]["<<j<<"]"<<endl;
+				cout<<"Colision ["<<i<<"]["<<j<<"]"<<endl;
+				if(plat.getBloq(j,i).CollideUp(player)){
+					on_Air=false;
+					cout<<"Colision superior["<<i<<"]["<<j<<"]"<<endl;
+				}
+				if(plat.getBloq(i,j).CollideWithWallright(player)){
+					//collide_With_wall_right=true;
+					cout<<"Colision derecha["<<i<<"]["<<j<<"]"<<endl;
+				}
+				if(plat.getBloq(i,j).CollideWithWallleft(player)){
+					collide_With_wall_left=true;
+					cout<<"Colision izquierda["<<i<<"]["<<j<<"]"<<endl;
+				}
 			}
-			if(plat.getBloq(i,j).CollideWithWallright(player)){
-				//collide_With_wall_right=true;
-				cout<<"Colision derecha["<<i<<"]["<<j<<"]"<<endl;
-			}
-			if(plat.getBloq(i,j).CollideWithWallleft(player)){
-				collide_With_wall_left=true;
-				cout<<"Colision izquierda["<<i<<"]["<<j<<"]"<<endl;
-			}
+			//else cout<<"No colisiona"<<endl;
+			
 		}
-	}
+	}/*
 	if(!on_Air) cout<<"Colision superior"<<endl;
 	else if(collide_With_wall_right)cout<<"Colision derecha"<<endl;
 	else if(collide_With_wall_left)cout<<"Colision izquierda"<<endl;
 	//else cout<<"No colisiona"<<endl;
-	
+	*/
 	
 	
 	plat.Update();

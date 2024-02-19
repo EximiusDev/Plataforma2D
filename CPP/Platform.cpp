@@ -20,20 +20,24 @@ Platform::Platform() {
 		Plat1[i].Init(Name4,i);
 		//Plat2[i].Init(Name4,i,6);
 	}*/
+	Texture textu;
+	textu.loadFromFile(Name4);
+	
+	
 	for(int j=0;j< cant_bloq_plat_y;j++) { 
 		for(int i=0;i<this->Get_cant_bloq_plat(j);i++) {
 			switch(j){
 			case 0:
-				Plat0[i].Init(Name4,i,3);
+				Plat0[i].Init(textu,i,3);
 				break;
 			case 1:
-				Plat1[i].Init(Name4,i,6);
+				Plat1[i].Init(textu,i,6);
 				break;
 			case 2:
-				Plat2[i].Init(Name4,i,7);
+				Plat2[i].Init(textu,i,7);
 				break;
 			default:
-				Plat1[i].Init(Name4,i);
+				Plat1[i].Init(textu,i);
 			}
 		}
 	}

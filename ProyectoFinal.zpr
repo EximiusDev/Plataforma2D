@@ -27,7 +27,7 @@ cursor=30:41
 open=true
 [source]
 path=CPP\Platform.cpp
-cursor=19:2
+cursor=39:23
 open=true
 [source]
 path=CPP\Player.cpp
@@ -43,7 +43,7 @@ cursor=12:43
 open=true
 [source]
 path=CPP\Bloque.cpp
-cursor=18:11
+cursor=29:1
 open=true
 [source]
 path=CPP\Parallax.cpp
@@ -58,7 +58,7 @@ cursor=27:29
 open=true
 [header]
 path=H\Platform.h
-cursor=11:33
+cursor=4:36
 open=true
 [header]
 path=H\Player.h
@@ -74,7 +74,7 @@ cursor=11:1
 open=true
 [header]
 path=H\Bloque.h
-cursor=11:38
+cursor=14:42
 open=true
 [header]
 path=H\Parallax.h

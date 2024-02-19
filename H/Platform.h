@@ -2,6 +2,8 @@
 #define PLATFORM_H
 #include "Bloque.h"
 
+#include <SFML/Graphics/Texture.hpp>
+
 class Platform {
 public:
 	Platform();

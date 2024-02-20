@@ -3,25 +3,28 @@
 #include "../H/Object.h"
 
 Bloque::Bloque():Object(){
+	scaleG={1.f*tamanio_pixeles/cant_pixeles,1.f*tamanio_pixeles/cant_pixeles};
 	spr.setScale(scaleG);
-	
 }
 
 void Bloque::Update(int i){
-	spr.move(speedG.x*-i,speedG.y);
+	spr.move(-i,0);
 	positionG.x+=speedG.x*-i;
-	if(positionG.x<=-16*scaleG.x){
-		spr.setPosition(1920,positionG.y);
-		positionG.x=1920;
+	///Esto de abajo lo deberia hacer la plataforma preseteada
+	if(positionG.x<=-1*resolutionG.x){
+		spr.setPosition(resolutionG.x,positionG.y);
+		positionG.x=resolutionG.x;
 	}
-	
 }
-void Bloque::Init(string name,int i,int Pl){ ///Pl indica el el numero de plataforma
-	
+void Bloque::Init(string name,int i,int j){ 
 	tex.loadFromFile(name);
 	spr.setTexture(tex);
-	positionG={i*200,900};
+	positionG={i*tamanio_pixeles*1.f,j*tamanio_pixeles*1.f};
 	spr.setPosition(positionG);
-	 ///Estos valores dependen de la resolucion para hacer que dejen de ser valores magicos debemos calcular el cambio de resolucion en "object" (Solo para valores menores a 6)
-		
+}
+void Bloque::Init(Texture & textu,int i,int j){ 
+	tex = textu;
+	spr.setTexture(tex);
+	positionG={i*tamanio_pixeles*1.f,j*tamanio_pixeles*1.f};
+	spr.setPosition(positionG);
 }

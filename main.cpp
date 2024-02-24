@@ -1,26 +1,47 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include "H/Game.h"
-
-
+//#include <SFML/Graphics.hpp>
+#include "Game.h"
+#include "Scene_Menu.h"
+//#include "Scene.h"
 using namespace sf;
+using namespace std;
 
 int main(int argc, char *argv[]){
 	
-	int resolution_x  = 1280; int resolution_y  = 720;
-	//Vector2i resolutionWindows = {1280,720};
 	
+	Game the_game (new Scene_Menu() );
+	the_game.Run();
 	
-	//int tamanio_bloque = 24* scale
-	int tamanio_bloque = resolution_y/10;
+	/*
+	RenderWindow win(VideoMode(640,480),"Prueba");
 	
-	Game G(resolution_x, resolution_y);
-	//Game G(resolutionWindows);
-	G.run();
+	win.setFramerateLimit(60);
 	
+	Texture t;
+	Sprite s;
 	
+	t.loadFromFile("sfml.png");
+	s.setTexture(t);
+	s.setPosition(175, 130);
+	*/
+	/*
+	while(win.isOpen()) {
+		
+		// procesar eventos
+		Event evt;
+		while(win.pollEvent(evt)) {
+			if(evt.type == Event::Closed)
+				win.close();	
+		}
+		
+		// actualizar
+		s.move(0.005,0.01);
+		
+		// redibujar todo
+		win.clear(Color(255,255,255,255));
+		win.draw(s);
+		win.display();
+	}
+	*/
 	return 0;
 }
 

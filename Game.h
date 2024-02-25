@@ -18,6 +18,7 @@ public:
 	void Stop();
 	
 	float GetTime_Sec_Curr_Scn();
+	float GetTime_Sec_Curr_mScn();
 private:
 	RenderWindow m_window;
 	Scene *m_scene, *m_next_scene = nullptr;

@@ -77,3 +77,6 @@ void Game::Draw ( ) {
 float Game::GetTime_Sec_Curr_Scn(){
 	return clk2.getElapsedTime().asSeconds();
 }
+float Game::GetTime_Sec_Curr_mScn(){
+	return clk2.getElapsedTime().asMilliseconds();
+}

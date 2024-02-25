@@ -1,10 +1,15 @@
 #include "Player.h"
 #include <SFML/Window/Keyboard.hpp>
+#include <iostream>
+using namespace std;
 
 Player::Player() { //: p_pos({50,300}){
 	p_circle.setRadius(25);
 	p_circle.setFillColor({200,150,50});
 	p_pos = {50,0};  //p_circle.setPosition({50,300});
+	
+	p_score = 0;
+	score_pos = p_pos.x;
 }
 
 void Player::Update(FloatRect platform_bounds){
@@ -22,12 +27,23 @@ void Player::Update(FloatRect platform_bounds){
 	
 	p_pos += p_speed;
 	
+	if(p_speed.x > 0){ 		///TEMPORAL
+		if (score_pos == p_pos.x) score_pos = -999;
+		if (score_pos <= p_pos.x) p_score += p_speed.x; // p_score ++; //
+	}
+	else{
+		if (score_pos == -999){
+			score_pos = p_pos.x;
+		}
+	} 						///TEMPORAL
+	
+	
+	cout<<p_score<<"  "<<score_pos<<"  "<<p_pos.x<<endl;
 	p_circle.setPosition(p_pos);
 	auto player_bounds = p_circle.getGlobalBounds(); // FloatRect
 	
 	//if(p_pos.y >=300){
-	if(player_bounds
-	   .intersects(platform_bounds)){
+	if(player_bounds.intersects(platform_bounds)){
 		p_speed.y = 0;
 		//p_speed.y = -p_speed.y +1;/// rebota
 		

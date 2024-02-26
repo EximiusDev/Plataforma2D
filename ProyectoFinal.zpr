@@ -15,7 +15,7 @@ tab_width=4
 tab_use_spaces=0
 explorer_path=.
 inherits_from=
-current_source=CPP\Platform.cpp
+current_source=CPP\Player.cpp
 path_char=\
 [source]
 path=main.cpp
@@ -23,7 +23,7 @@ cursor=14:1
 open=true
 [source]
 path=CPP\Game.cpp
-cursor=57:33
+cursor=39:4
 open=true
 [source]
 path=CPP\Platform.cpp
@@ -31,7 +31,7 @@ cursor=48:52
 open=true
 [source]
 path=CPP\Player.cpp
-cursor=44:6
+cursor=63:80
 open=true
 [source]
 path=CPP\Object.cpp

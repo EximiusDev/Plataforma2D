@@ -24,7 +24,7 @@ public:
 	Object();
 	Object(string name);
 	void Draw (RenderWindow& win);
-	bool Collide(Object & O);
+	bool CollideDown(Object & O);
 	bool CollideUp(Object & O);
 	bool CollideWithWallleft(Object & O);
 	bool CollideWithWallright(Object & O);

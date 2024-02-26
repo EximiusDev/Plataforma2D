@@ -23,28 +23,35 @@ void Game::run(){
 	}
 }
 void Game::update(){
-	on_Air=true;
+	collide_With_top=false;
+	collide_With_floor=false;
 	collide_With_wall_left=false;
 	collide_With_wall_right=false;
 	
+
 	for(int i=0;i<plat.Get_cant_bloq_plat_y();i++) { 
 		for(int j=0;j<plat.Get_cant_bloq_plat(i);j++) { 
-			if(plat.getBloq(j,i).Collide(player)){
-				cout<<"Colision ["<<i<<"]["<<j<<"]"<<endl;
-				if(plat.getBloq(j,i).CollideUp(player)){
-					on_Air=false;
-					cout<<"Colision superior["<<i<<"]["<<j<<"]"<<endl;
-				}
-				if(plat.getBloq(i,j).CollideWithWallright(player)){
-					//collide_With_wall_right=true;
-					cout<<"Colision derecha["<<i<<"]["<<j<<"]"<<endl;
-				}
-				if(plat.getBloq(i,j).CollideWithWallleft(player)){
-					collide_With_wall_left=true;
-					cout<<"Colision izquierda["<<i<<"]["<<j<<"]"<<endl;
-				}
+			Bloque aux=plat.getBloq(j,i);
+			if(player.CollideDown(aux)){
+				collide_With_floor=true;
 			}
-			//else cout<<"No colisiona"<<endl;
+			if(player.CollideUp(aux)){
+				collide_With_top=true;
+				
+			}
+			if(player.CollideWithWallright(aux)){
+				collide_With_wall_right=true;
+				
+					
+			}
+			if(player.CollideWithWallleft(aux)){
+				collide_With_wall_left=true;
+				
+					
+			}
+				
+				
+			
 			
 		}
 	}/*
@@ -55,8 +62,9 @@ void Game::update(){
 	*/
 	
 	
-	plat.Update(player.getVelocity());
-	player.Update(on_Air , collide_With_wall_left,collide_With_wall_right);
+	plat.Update(platformVelocity);
+	
+	player.Update(collide_With_floor,collide_With_top,collide_With_wall_left,collide_With_wall_right);
 	
 	background_Parallax.Update();
 	

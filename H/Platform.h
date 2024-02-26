@@ -8,7 +8,8 @@ class Platform {
 public:
 	Platform();
 	void Draw(RenderWindow & win);
-	void Update();
+
+	void Update(Vector2f Velocity);
 	//Bloque getBloq(int i);
 	Bloque getBloq(int i, int num_bloq_y = 1);
 	int Get_cant_bloq_plat(int i = 1);
@@ -21,6 +22,8 @@ private:
 	vector<Bloque>Plat2;
 	int cant_bloq_plat;
 	int cant_bloq_plat_y;
+	Clock Timer;
+	Texture textu;
 	
 	
 };

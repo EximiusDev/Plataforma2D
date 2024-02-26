@@ -1,7 +1,6 @@
 #include "Player.h"
 #include <SFML/Window/Keyboard.hpp>
-#include <iostream>
-using namespace std;
+//using namespace std;
 
 Player::Player() { //: p_pos({50,300}){
 	p_circle.setRadius(25);
@@ -36,9 +35,9 @@ void Player::Update(FloatRect platform_bounds){
 			score_pos = p_pos.x;
 		}
 	} 						///TEMPORAL
+	//cout<<p_score<<"  "<<score_pos<<"  "<<p_pos.x<<endl;
 	
 	
-	cout<<p_score<<"  "<<score_pos<<"  "<<p_pos.x<<endl;
 	p_circle.setPosition(p_pos);
 	auto player_bounds = p_circle.getGlobalBounds(); // FloatRect
 	

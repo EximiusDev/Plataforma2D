@@ -12,6 +12,9 @@ public:
 	Scene_Play();
 	void Update (Game & playgame) override;
 	void Draw (sf::RenderWindow & win) override;
+	
+	//void InputEvents (Event & event) override;
+	void InputEvents (Event & event) override {};
 private:
 	RectangleShape m_floor;
 	Player m_player;
@@ -19,7 +22,9 @@ private:
 	Text txt_mov_lat, txt_salto;
 	Text txt_score;
 	int m_score;
-	int seconds_game;
+	long seconds_game;
+	long seconds_pause;
+	//bool paused;
 };
 
 #endif

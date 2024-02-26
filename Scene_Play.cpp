@@ -2,8 +2,13 @@
 #include "Game.h"
 #include <SFML/Window/Keyboard.hpp>
 #include "Scene_Menu.h"
+//#include <iostream>
+#include "Scene_Pause.h"
+using namespace std;
 
 Scene_Play::Scene_Play() {
+	this->Unpause_Scn();//paused = this->GetPause();
+	
 	m_floor.setSize({640.f,300.f});
 	m_floor.setPosition({0.f,350.f});
 	m_floor.setFillColor({100,200,100});
@@ -35,15 +40,33 @@ Scene_Play::Scene_Play() {
 
 void Scene_Play::Update (Game & playgame) {
 	
-	if (Keyboard::isKeyPressed(Keyboard::Key::Escape)){ // Escape
-		playgame.SetScene(new Scene_Menu());
-		///playgame.Stop();
+	if (Keyboard::isKeyPressed(Keyboard::Key::Space)){
+		/* ///NO USAR NO ESTA BIEN HECHO
+		bool press = false;
+		//cout<<"---"<<endl;
+		while (press == false){
+			//cout<<"xxx"<<endl;
+			if (Keyboard::isKeyPressed(Keyboard::Key::Return)) press = true;
+		}*/
+		//paused = true;
+		playgame.Pause_Scene(new Scene_Pause());
 	}
-	m_player.Update(m_floor.getGlobalBounds());
 	
-	m_score = m_player.GetScore();
-	seconds_game = playgame.GetTime_Sec_Curr_mScn()/100;
-	txt_score.setString("Score : " + std::to_string(m_score) + " \nTime: "+ std::to_string(seconds_game));
+	if (!this->GetPause()){ // (!paused){
+		
+		if (Keyboard::isKeyPressed(Keyboard::Key::Escape)){ // Escape
+			playgame.SetScene(new Scene_Menu());
+			///playgame.Stop();
+		}
+		m_player.Update(m_floor.getGlobalBounds());
+		
+		m_score = m_player.GetScore();
+		seconds_pause = playgame.GetTime_mSec_Pause()/100; /// que lo haga el game
+		seconds_game = playgame.GetTime_mSec_Curr_Scn()/100;
+		txt_score.setString("Score : " + std::to_string(m_score) + " \nTime: "+ std::to_string(seconds_game - seconds_pause));
+		//txt_score.setString("Score : " + std::to_string(m_score) + " \nTime: "+ std::to_string(seconds_game) + " \n time pause: " + std::to_string(seconds_pause));
+		
+	}
 }
 
 void Scene_Play::Draw (sf::RenderWindow & win) {

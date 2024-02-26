@@ -15,6 +15,7 @@ public:
 	void Update (Game & playgame) override;
 	void Draw (sf::RenderWindow & win) override;
 	
+	void InputEvents (Event & event) override {};
 	//~Scene_Menu();
 private:
 	Texture textu;

@@ -20,6 +20,21 @@ Game::Game(Scene *first_scene):m_window(VideoMode(640,480),"Prueba") {
 void Game::SetScene(Scene *next_scene){
 	m_next_scene = next_scene;
 }
+void Game::Pause_Scene(Scene *temp_scene){
+	m_scene->Pause_Scn();
+	m_pause_scene = temp_scene;
+	clk_pause.restart();
+}
+void Game::Unpause_Scene(){
+	delete m_scene;
+	m_scene = m_aux_scene;
+	m_aux_scene = nullptr;
+	m_scene->Unpause_Scn();
+	millisec_paused += clk_pause.getElapsedTime().asMilliseconds();
+}
+void Game::Delete_aux_Scene(){
+	delete m_aux_scene;
+}
 
 Game::~Game() {
 	delete m_scene;
@@ -54,6 +69,13 @@ void Game::Run(){
 			m_scene = m_next_scene;
 			m_next_scene = nullptr;
 		}
+		else if(m_pause_scene){
+			//clk_pause.restart();
+			//delete m_aux_scene;
+			m_aux_scene = m_scene;
+			m_scene = m_pause_scene;
+			m_pause_scene = nullptr;
+		}
 	}
 }
 
@@ -77,6 +99,13 @@ void Game::Draw ( ) {
 float Game::GetTime_Sec_Curr_Scn(){
 	return clk2.getElapsedTime().asSeconds();
 }
-float Game::GetTime_Sec_Curr_mScn(){
+float Game::GetTime_mSec_Curr_Scn(){
 	return clk2.getElapsedTime().asMilliseconds();
+}
+float Game::GetTime_mSec_Pause(){
+	if(m_scene->GetPause()){
+		if (millisec_paused == 0) return clk_pause.getElapsedTime().asMilliseconds();
+		//else return millisec_paused;
+	}
+	else return millisec_paused;
 }

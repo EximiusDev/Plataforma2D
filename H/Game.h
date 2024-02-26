@@ -23,10 +23,11 @@ private:
 	Player player;
 	Parallax background_Parallax;
 	Platform plat;
-	
-	bool on_Air;
+	bool collide_With_top;
+	bool collide_With_floor;
 	bool collide_With_wall_right;
 	bool collide_With_wall_left;
+	Vector2f platformVelocity={2,2};
 	
 	///Vector2f worldspeed = {-0.5,0};  agregar despues
 	
@@ -34,17 +35,17 @@ private:
 	
 	Vector2i resolutionWin;
 	
-public:
+	public:
 		
-	Game(int resolution_x, int resolution_y);
-	//Game(Vector2i resolutionWindows);
-	Game();
-	void run();
-	void update();
-	void draw();
-	void processEvent();
-
-	
+		Game(int resolution_x, int resolution_y);
+		//Game(Vector2i resolutionWindows);
+		Game();
+		void run();
+		void update();
+		void draw();
+		void processEvent();
+		
+		
 };
 
 #endif

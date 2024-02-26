@@ -8,7 +8,7 @@ Bloque::Bloque():Object(){
 }
 
 void Bloque::Update(int i){
-	spr.move(speedG.x*-i,speedG.y);
+	spr.move(-i,speedG.y);
 	positionG.x+=speedG.x*-i;
 	///Esto de abajo lo deberia hacer la plataforma preseteada
 	if(positionG.x<=-1*resolutionG.x){
@@ -23,8 +23,10 @@ void Bloque::Init(string name,int i,int j){
 	spr.setPosition(positionG);
 }
 void Bloque::Init(Texture & textu,int i,int j){ 
-	tex = textu;
-	spr.setTexture(tex);
+	//tex = textu;
+	//spr.setTexture(tex);
+	spr.setTexture(textu);
 	positionG={i*tamanio_pixeles*1.f,j*tamanio_pixeles*1.f};
 	spr.setPosition(positionG);
+
 }

@@ -1,5 +1,6 @@
+#include "Object.h"
 
-#include "../H/Object.h"
+//#include "../H/Object.h"
 #include <iostream>
 using namespace std;
 Object::Object() {}
@@ -34,7 +35,7 @@ bool Object::CollideDown(Object & Obj){ /// colision con el piso
 	if(m_bounds.intersects(other_bounds)&&m_bounds.top+m_bounds.height>other_bounds.top&&m_bounds.left<other_bounds.left+other_bounds.width&&m_bounds.left+m_bounds.width>other_bounds.left&&m_bounds.top+m_bounds.height<other_bounds.top+22){
 		return true;
 	}
-		return false;
+	return false;
 	
 }; 
 bool Object::CollideUp(Object & Obj){
@@ -42,12 +43,12 @@ bool Object::CollideUp(Object & Obj){
 	//FloatRect r2= Obj.spr.getGlobalBounds();
 	m_bounds = this->spr.getGlobalBounds(); 	// m_bounds : player
 	other_bounds = Obj.spr.getGlobalBounds(); 	// other_bounds : bloq
-
+	
 	if(m_bounds.intersects(other_bounds)&&m_bounds.top<other_bounds.top+other_bounds.height&&m_bounds.top>other_bounds.top+other_bounds.height-20&&m_bounds.left<other_bounds.left+other_bounds.width&&m_bounds.left+m_bounds.width>other_bounds.left){
 		return true;
 	}
 	return false;
-
+	
 }; 
 
 
@@ -62,7 +63,7 @@ bool Object::CollideWithWallright(Object & Obj){
 		return true;
 	}
 	return false;
-
+	
 }
 bool Object::CollideWithWallleft(Object & Obj){
 	//FloatRect r1= this->spr.getGlobalBounds();
@@ -76,6 +77,4 @@ bool Object::CollideWithWallleft(Object & Obj){
 	}
 	return false;
 }
-
-
 

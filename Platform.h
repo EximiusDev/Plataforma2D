@@ -8,7 +8,7 @@ class Platform {
 public:
 	Platform();
 	void Draw(RenderWindow & win);
-
+	
 	void Update(Vector2f Velocity);
 	//Bloque getBloq(int i);
 	Bloque getBloq(int i, int num_bloq_y = 1);
@@ -29,4 +29,3 @@ private:
 };
 
 #endif
-

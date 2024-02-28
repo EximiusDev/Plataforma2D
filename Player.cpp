@@ -1,4 +1,5 @@
-#include "../H/Player.h"
+#include "Player.h"
+//#include "../H/Player.h"
 
 #include <string>
 

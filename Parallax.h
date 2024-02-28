@@ -5,13 +5,13 @@
 #include <vector>
 #include "Background.h"
 class Parallax{
-    public:
-    Parallax();
-    void Update();
+public:
+	Parallax();
+	void Update();
 	void Draw(RenderWindow &win);
-    private:
-    vector<Background>background_Images;
-
+private:
+	vector<Background>background_Images;
+	
 } ;
 
 #endif

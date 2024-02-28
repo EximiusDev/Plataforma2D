@@ -8,7 +8,7 @@
 using namespace std;
 using namespace sf;
 class Object {
-
+	
 protected:
 	Vector2f worldspeed = {-3,0}; /// no modificar por fuera de esta clase
 	Vector2f scaleG={0,0};
@@ -36,8 +36,7 @@ public:
 	bool CollideWithWallleft(Object & Obj);
 	bool CollideWithWallright(Object & Obj);
 	
-
+	
 };
 
 #endif
-

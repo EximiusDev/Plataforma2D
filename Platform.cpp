@@ -1,5 +1,6 @@
+#include "Platform.h"
 
-#include "../H/Platform.h"
+//#include "../H/Platform.h"
 ///Aca hay que hacerlo con puntero
 ///Podemos hacer que apraezcan con un timer
 Platform::Platform() {

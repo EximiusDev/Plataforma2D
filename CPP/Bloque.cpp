@@ -1,6 +1,7 @@
 
+
 #include "../H/Bloque.h"
-#include "../H/Object.h"
+//#include "../H/Object.h"
 
 Bloque::Bloque():Object(){
 	scaleG={1.f*tamanio_pixeles/cant_pixeles,1.f*tamanio_pixeles/cant_pixeles};
@@ -28,5 +29,5 @@ void Bloque::Init(Texture & textu,int i,int j){
 	spr.setTexture(textu);
 	positionG={i*tamanio_pixeles*1.f,j*tamanio_pixeles*1.f};
 	spr.setPosition(positionG);
-
+	
 }

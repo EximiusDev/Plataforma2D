@@ -1,52 +1,44 @@
 #ifndef GAME_H
 #define GAME_H
-#include <SFML\Graphics.hpp>
-#include <SFML\Graphics\RenderWindow.hpp>
-#include <SFML\Graphics\Texture.hpp>
-#include <SFML\Graphics\Sprite.hpp>
-#include "Player.h"
-#include <vector>
-#include "Background.h"
-#include "Platform.h"
-#include "Parallax.h"
-using namespace std;
+#include "Scene.h"
+#include <SFML/Graphics/RenderWindow.hpp>
+//#include <SFML/Window/Event.hpp>
 using namespace sf;
+//using namespace std;
 
 class Game {
+public:
+	Game(Scene *first_scene);
+	void Run();
+	void ProcessEvents();
+	void Update();
+	void Draw();
+	void SetScene(Scene *next_scene);
+	void Pause_Scene(Scene *temp_scene);
+	void Unpause_Scene();
+	void Delete_aux_Scene();
+	~Game();
+	void Stop();
+	
+	float GetTime_Sec_Curr_Scn(); // seconds of current Scene
+	float GetTime_mSec_Curr_Scn();
+	float GetTime_mSec_Pause();
 private:
-	RenderWindow win;
+	RenderWindow m_window;
+	Scene *m_scene, *m_next_scene = nullptr;
+	Scene *m_aux_scene = nullptr, *m_pause_scene = nullptr;
 	
-	/*
-	Texture textur;
-	Sprite spr;*/
-	
-	Player player;
-	Parallax background_Parallax;
-	Platform plat;
-	bool collide_With_top;
-	bool collide_With_floor;
-	bool collide_With_wall_right;
-	bool collide_With_wall_left;
-	Vector2f platformVelocity={2,2};
-	
-	///Vector2f worldspeed = {-0.5,0};  agregar despues
-	
-	//const float GridSize = 80.f;
-	
-	Vector2i resolutionWin;
-	
-	public:
-		
-		Game(int resolution_x, int resolution_y);
-		//Game(Vector2i resolutionWindows);
-		Game();
-		void run();
-		void update();
-		void draw();
-		void processEvent();
-		
-		
+	Clock clk1;
+	Clock clk2;
+	Clock clk_pause;
+	long millisec_paused = 0;
 };
 
 #endif
 
+/*
+int main(){
+	Game the_game (new EscenaMenu() );
+	the_game.Run();
+}
+*/

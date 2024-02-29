@@ -1,5 +1,6 @@
-
 #include "../H/Platform.h"
+
+//#include "../H/Platform.h"
 ///Aca hay que hacerlo con puntero
 ///Podemos hacer que apraezcan con un timer
 Platform::Platform() {
@@ -42,31 +43,28 @@ Platform::Platform() {
 		}
 	}
 }
-void Platform::Update(Vector2f Velocity){
+void Platform::Update(int Velocity){
 	/*
 	for(int i=0;i<cant_bloq_plat;i++) { 
 	Plat0[i].Update( 3 ); /// Velocidad (speed = -1* 3)
 	Plat1[i].Update( 3 ); /// Velocidad (speed = -1* 3)
 	Plat2[i].Update( 3 ); /// Velocidad (speed = -1* 3)
 }*/
-	if(Timer.getElapsedTime().asMilliseconds()>=500){
-		Velocity.x=2;
-		Timer.restart();
-	}
+
 	for(int j=0;j< cant_bloq_plat_y;j++) { 
 		for(int i=0;i<this->Get_cant_bloq_plat(j);i++) {
 			switch(j){
 			case 0:
-				Plat0[i].Update( Velocity.x ); /// Velocidad (speed = -1* 3)
+				Plat0[i].Update( Velocity ); /// Velocidad (speed = -1* 3)
 				break;
 			case 1:
-				Plat1[i].Update( Velocity.x ); /// Velocidad (speed = -1* 3)
+				Plat1[i].Update( Velocity ); /// Velocidad (speed = -1* 3)
 				break;
 			case 2:
-				Plat2[i].Update( Velocity.x ); /// Velocidad (speed = -1* 3)
+				Plat2[i].Update( Velocity ); /// Velocidad (speed = -1* 3)
 				break;
 			default:
-				Plat1[i].Update( Velocity.x); /// Velocidad (speed = -1* 3)
+				Plat1[i].Update( Velocity); /// Velocidad (speed = -1* 3)
 			}
 		}
 	}

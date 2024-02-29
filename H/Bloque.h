@@ -8,6 +8,7 @@ class Bloque:public Object{
 private:
 	const int cant_pixeles = 24;
 	int tamanio_pixeles = resolutionG.x/16;
+	FloatRect r1;
 public:
 	Bloque();
 	void Update(int i);

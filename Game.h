@@ -6,6 +6,7 @@
 using namespace sf;
 //using namespace std;
 
+
 class Game {
 public:
 	Game(Scene *first_scene);
@@ -20,6 +21,7 @@ public:
 	~Game();
 	void Stop();
 	
+	float GetDeltaTime();
 	float GetTime_Sec_Curr_Scn(); // seconds of current Scene
 	float GetTime_mSec_Curr_Scn();
 	float GetTime_mSec_Pause();

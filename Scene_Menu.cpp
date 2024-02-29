@@ -18,7 +18,7 @@ Scene_Menu::Scene_Menu() {
 	spr.setScale(2, 2);
 }
 
-void Scene_Menu::Update (Game & playgame) {
+void Scene_Menu::Update (Game & playgame, RenderWindow & win) {
 	spr.move(0.005,0.01);
 	
 	if (Keyboard::isKeyPressed(Keyboard::Key::Return)){ // Enter

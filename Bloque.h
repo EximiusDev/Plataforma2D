@@ -8,11 +8,17 @@ class Bloque:public Object{
 private:
 	const int cant_pixeles = 24;
 	int tamanio_pixeles = resolutionG.x/16;
+	bool reset_block;
 public:
 	Bloque();
-	void Update(int i);
+	void Update(int vel);
+	void Update(int vel, float delta);
 	void Init(string name,int i,int j = 7);
 	void Init(Texture & textu,int i,int j = 7);
+	
+	void Draw (RenderWindow& win , bool is_active = false);
+	bool is_block_active();//{return reset_block;}
+	void block_out_window(bool state);//{reset_block = out_window;}
 };
 
 #endif

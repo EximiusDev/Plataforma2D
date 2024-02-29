@@ -9,7 +9,7 @@ class Game;
 class Scene {
 public:
 	Scene();
-	virtual void Update(Game &playgame) = 0;
+	virtual void Update(Game &playgame, RenderWindow & win) = 0;
 	virtual void Draw(sf::RenderWindow & win) = 0;
 	
 	virtual void InputEvents(Event &event) = 0;

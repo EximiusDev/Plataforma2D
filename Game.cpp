@@ -9,7 +9,6 @@ using namespace std;
 using namespace sf;
 //using namespace std;
 
-//Game::Game(Scene *first_scene):m_window(VideoMode(640,480),"Prueba") {
 Game::Game(Scene *first_scene):m_window(VideoMode(1280,720),"Juego Final P.O.O") {
 	m_window.setFramerateLimit(60);
 	m_scene = first_scene;
@@ -92,13 +91,15 @@ void Game::ProcessEvents ( ) {
 }
 
 void Game::Update ( ) {
-	m_scene->Update(*this);
+	m_scene->Update(*this,m_window);
 }
 
 void Game::Draw ( ) {
 	m_scene->Draw(m_window);
 }
-
+float Game::GetDeltaTime(){
+	return clk1.getElapsedTime().asSeconds();
+}
 float Game::GetTime_Sec_Curr_Scn(){
 	return clk2.getElapsedTime().asSeconds();
 }

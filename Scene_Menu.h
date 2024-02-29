@@ -12,7 +12,7 @@ using namespace std;
 class Scene_Menu : public Scene {
 public:
 	Scene_Menu();
-	void Update (Game & playgame) override;
+	void Update (Game & playgame, RenderWindow & win) override;
 	void Draw (sf::RenderWindow & win) override;
 	
 	void InputEvents (Event & event) override {};

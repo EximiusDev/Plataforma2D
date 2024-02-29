@@ -6,6 +6,7 @@
 #include "Platform.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include "Game.h"
 using namespace std;
 using namespace sf;
 class Player: public Object{
@@ -28,7 +29,7 @@ private:
 	
 public:
 	Player();
-	void Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left,bool collide_With_wall_right,int aceleration);
+	void Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left,bool collide_With_wall_right,int aceleration,Game& playgame);
 	string Animation ();
 	
 	

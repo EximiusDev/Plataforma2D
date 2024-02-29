@@ -7,7 +7,7 @@
 class Scene_Pause : public Scene {
 public:
 	Scene_Pause();
-	void Update (Game & playgame) override;
+	void Update (Game & playgame,RenderWindow & win) override;
 	void Draw (sf::RenderWindow & win) override;
 	void InputEvents (Event & event) override;
 private:

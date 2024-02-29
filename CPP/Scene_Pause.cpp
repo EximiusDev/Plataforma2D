@@ -22,7 +22,7 @@ Scene_Pause::Scene_Pause() {
 	txt_button_play.setCharacterSize(20);
 }
 
-void Scene_Pause::Update (Game & playgame) {
+void Scene_Pause::Update (Game & playgame,RenderWindow & win) {
 	if (Keyboard::isKeyPressed(Keyboard::Key::Escape)){ // Escape
 		/// FALTA HACER DELETE DE Scene_Play
 		playgame.Delete_aux_Scene();

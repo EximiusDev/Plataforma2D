@@ -4,6 +4,7 @@
 #include "../H/Scene_Menu.h"
 #include <iostream>
 #include "../H/Scene_Pause.h"
+#include "../Scene_GameOver.h"
 using namespace std;
 
 #include <SFML/Graphics.hpp>
@@ -49,7 +50,7 @@ Scene_Play::Scene_Play() {
 	txt_score.setCharacterSize(20);
 }
 
-void Scene_Play::Update (Game & playgame) {
+void Scene_Play::Update (Game & playgame, RenderWindow & win) {
 	
 	if (Keyboard::isKeyPressed(Keyboard::Key::Space)){
 		/* ///NO USAR NO ESTA BIEN HECHO
@@ -109,8 +110,8 @@ void Scene_Play::Update (Game & playgame) {
 		
 		
 		plat.Update(aceleration);
+		player.Update(collide_With_floor,collide_With_top,collide_With_wall_left,collide_With_wall_right,aceleration,playgame);
 		
-		player.Update(collide_With_floor,collide_With_top,collide_With_wall_left,collide_With_wall_right,aceleration);
 		
 		background_Parallax.Update(aceleration);
 		

@@ -27,23 +27,42 @@ Scene_Menu::Scene_Menu() {
 	Spr[3].setTexture(Tex[3]);
 	Spr[3].setPosition(386,528);
 
+	
 	//Hay que poner el scale segun resolucion
 
 }
 
-void Scene_Menu::Update (Game & playgame) {
+void Scene_Menu::Update (Game & playgame, RenderWindow & win) {
 	
+	r1 = Arrow.getPosition(win);
 	
-	if (Keyboard::isKeyPressed(Keyboard::Key::Return)){ // Enter
-		playgame.SetScene(new Scene_Play()); //playgame.SetScene(new Match());
-		///new_scene = true;
+	if (Spr[1].getGlobalBounds().contains(r1.x,r1.y)){ 
+		Spr[1].setColor(Color(200,200,200));
+		if(Arrow.isButtonPressed(Arrow.Left)){
+			playgame.SetScene(new Scene_Play());
+		} 
+		
+	}else{
+		Spr[1].setColor(Color(255,255,255));
 	}
-	if (Keyboard::isKeyPressed(Keyboard::Key::Escape)){ // Escape
+	///if (Spr[2].getGlobalBounds().contains(r1.x,r1.y)){ 
+	///	Spr[2].setColor(Color(200,200,200));
+	///if(Arrow.isButtonPressed(Arrow.Left)){
+	///	playgame.SetScene(new Scene_Score());
+	///} 
+	///}else{
+	///	Spr[1].setColor(Color(255,255,255));
+	///}
+		 //playgame.SetScene(new Match());
+		///new_scene = true;
+	if (Spr[3].getGlobalBounds().contains(r1.x,r1.y)){ 
+		Spr[3].setColor(Color(200,200,200));
+		if(Arrow.isButtonPressed(Arrow.Left)){
+			exit(0);
+		} 
 		
-		///Agregar clock clk (dar un tiempo para button_Exit)
-		 /// en segundos
-			playgame.Stop();
-		
+	}else{
+		Spr[3].setColor(Color(255,255,255));
 	}
 	
 }

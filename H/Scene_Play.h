@@ -22,7 +22,7 @@ using namespace sf;
 class Scene_Play : public Scene {
 public:
 	Scene_Play();
-	void Update (Game & playgame) override;
+	void Update (Game & playgame, RenderWindow & win) override;
 	void Draw (sf::RenderWindow & win) override;
 	
 	//void InputEvents (Event & event) override;

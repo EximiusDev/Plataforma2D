@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char *argv[]){
 	
 	
-	Game the_game (new Scene_Menu() );
+	Game the_game (new Scene_Menu());
 	the_game.Run();
 	
 	/*

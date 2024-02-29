@@ -88,11 +88,12 @@ void Game::ProcessEvents ( ) {
 		if(evt.type == Event::Closed)
 			// m_window.close();
 			Stop();
+			
 	}
 }
 
 void Game::Update ( ) {
-	m_scene->Update(*this);
+	m_scene->Update(*this,m_window);
 }
 
 void Game::Draw ( ) {

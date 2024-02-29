@@ -6,6 +6,9 @@
 #include <iostream>
 
 #include <SFML/Window/Sensor.hpp>
+#include "../H/Game.h"
+#include "../Scene_GameOver.h"
+#include "../H/Scene_Menu.h"
 
 using namespace std;
 
@@ -25,7 +28,7 @@ Player::Player(): Object() {
 	
 }
 
-void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left, bool collide_With_wall_right,int aceleration) {
+void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left, bool collide_With_wall_right,int aceleration,Game& playgame) {
 	speedG={0,0};
 	
 	if (collide_With_floor) { //Si no esta en el aire...
@@ -45,8 +48,10 @@ void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_
 		on_Air_Falling = true; // Esta cayendo
 		speedG.y = +9; // Velocidad de caida
 	}
-	if (r1.top > resolutionG.y || r1.left <= 0) {
+	if ( r1.left < 0) {
 		spr.setPosition(resolutionG.x * 0.4f, resolutionG.y * 0.2f);
+		playgame.SetScene(new Scene_GameOver());
+		
 	}
 	if (jumping_time.getElapsedTime().asMilliseconds() >= 500 || !Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::W) && !Keyboard::isKeyPressed(Keyboard::Space) || r1.top < 0|| collide_With_top && !collide_With_floor) { //Si paso el tiempo O si no fueron apretadas las tecla de salto en el aire...
 		on_Air_Falling = true; //Se activa la caida

@@ -1,4 +1,4 @@
-#include "Scene.h"
+#include "../H/Scene.h"
 //using namespace sf;
 //using namespace std;
 

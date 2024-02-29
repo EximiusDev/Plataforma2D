@@ -1,6 +1,6 @@
 //#include <SFML/Graphics.hpp>
-#include "Game.h"
-#include "Scene_Menu.h"
+#include "../H/Game.h"
+#include "../H/Scene_Menu.h"
 //#include "Scene.h"
 using namespace sf;
 using namespace std;

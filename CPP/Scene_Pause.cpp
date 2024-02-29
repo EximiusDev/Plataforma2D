@@ -1,7 +1,7 @@
-#include "Scene_Pause.h"
+#include "../H/Scene_Pause.h"
 #include <SFML/Window/Keyboard.hpp>
-#include "Game.h"
-#include "Scene_Menu.h"
+#include "../H/Game.h"
+#include "../H/Scene_Menu.h"
 
 Scene_Pause::Scene_Pause() {
 	//initialize text

@@ -11,8 +11,8 @@ private:
 	bool reset_block;
 public:
 	Bloque();
-	void Update(int vel);
-	void Update(int vel, float delta);
+	void Update(float vel);
+	void Update(float vel, float delta);
 	void Init(string name,int i,int j = 7);
 	void Init(Texture & textu,int i,int j = 7);
 	

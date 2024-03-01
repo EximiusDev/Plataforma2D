@@ -48,6 +48,7 @@ Scene_Play::Scene_Play() {
 	txt_score.setFillColor({255,255,255});
 	txt_score.setPosition(0,0);
 	txt_score.setCharacterSize(20);
+	acel_velocity = 3.f;
 }
 
 void Scene_Play::Update (Game & playgame, RenderWindow & win) {
@@ -63,7 +64,7 @@ void Scene_Play::Update (Game & playgame, RenderWindow & win) {
 		//paused = true;
 		playgame.Pause_Scene(new Scene_Pause());
 	}
-	aceleration=acelerador.getElapsedTime().asSeconds()/2;
+	
 	if (!this->GetPause()){ // (!paused){
 		
 		if (Keyboard::isKeyPressed(Keyboard::Key::Escape)){ // Escape
@@ -110,11 +111,15 @@ void Scene_Play::Update (Game & playgame, RenderWindow & win) {
 		*/
 		
 		
-		plat.Update(aceleration);
-		player.Update(collide_With_floor,collide_With_top,collide_With_wall_left,collide_With_wall_right,aceleration,playgame);
+		acel_velocity += playgame.GetDeltaTime()/10; //acel_velocity=acelerador.getElapsedTime().asSeconds()/10;
+		//acel_velocity  = 10;
+		//	cout<<"velocidad: "<<acel_velocity<<" delta: "<<playgame.GetDeltaTime()<<endl;
+		
+		plat.Update(acel_velocity);
+		player.Update(collide_With_floor,collide_With_top,collide_With_wall_left,collide_With_wall_right,acel_velocity,playgame);
 		
 		
-		background_Parallax.Update(aceleration);
+		background_Parallax.Update(acel_velocity);
 		
 		
 		
@@ -125,9 +130,9 @@ void Scene_Play::Update (Game & playgame, RenderWindow & win) {
 		seconds_pause = playgame.GetTime_mSec_Pause()/100; /// que lo haga el game
 		seconds_game = playgame.GetTime_mSec_Curr_Scn()/100;
 		seconds_played = ( playgame.GetTime_mSec_Curr_Scn() - playgame.GetTime_mSec_Pause() )/100;
-		//txt_score.setString("Score : " + to_string(m_score) + " \nTime: "+ to_string(seconds_game - seconds_pause));
-		txt_score.setString("Score : " + to_string(m_score) + " \nTime: "+ to_string(seconds_played));
-		//txt_score.setString("Score : " + to_string(m_score) + " \nTime: "+ to_string(seconds_game) + " \n time pause: " + to_string(seconds_pause));
+		//txt_score.setString("Score: " + to_string(m_score) + " \nTime: "+ to_string(seconds_game - seconds_pause));
+		txt_score.setString("Score: " + to_string(m_score) + " \nTime: "+ to_string(seconds_played));
+		//txt_score.setString("Score: " + to_string(m_score) + " \nTime: "+ to_string(seconds_game) + " \n time pause: " + to_string(seconds_pause));
 		if(seconds_game<=seconds_pause) cout<<"ERROR 1"<<endl;
 		if(seconds_played!=seconds_game - seconds_pause) cout<<"ERROR 2"<<endl;
 		

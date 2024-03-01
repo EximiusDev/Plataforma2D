@@ -8,7 +8,7 @@ Bloque::Bloque():Object(){
 	spr.setScale(scaleG);
 }
 
-void Bloque::Update(int vel){
+void Bloque::Update(float vel){
 	spr.move(-vel,speedG.y);
 	positionG.x+=speedG.x*-vel;
 	///Esto de abajo lo deberia hacer la plataforma preseteada
@@ -22,9 +22,10 @@ void Bloque::Update(int vel){
 	reset_block = false;
 	}*/
 }
-void Bloque::Update(int vel, float delta){
-	spr.move(-vel,speedG.y);
-	positionG.x+=speedG.x*-vel;
+void Bloque::Update(float vel, float delta){
+	speedG.x = - vel;
+	positionG += speedG; // positionG.x+=speedG.x*-vel;
+	spr.move(speedG); // spr.move(-vel,speedG.y);
 	///Esto de abajo lo deberia hacer la plataforma preseteada
 	if(positionG.x<=-1*resolutionG.x/2){
 		spr.setPosition(resolutionG.x,positionG.y);

@@ -5,6 +5,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Text.hpp>
 using namespace sf;
 using namespace std;
 class Scene_GameOver :public Scene {
@@ -24,8 +25,10 @@ private:
 	Vector2i r1;
 	int highscore;
 	int m_score;
-	//Font m_font
-	//txt_mov_lat.setFont(m_font);
+	
+	Font m_font;
+	Text txt_score;
+	Text txt_highScore;
 };
 
 #endif

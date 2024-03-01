@@ -29,7 +29,7 @@ private:
 	int p_score;
 public:
 	Player();
-	void Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left,bool collide_With_wall_right,int aceleration,Game& playgame);
+	void Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left,bool collide_With_wall_right,float velocity,Game& playgame);
 	string Animation ();
 	void Change_score(int score);
 	

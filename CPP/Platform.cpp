@@ -89,7 +89,7 @@ Platform::Platform() {
 	}
 	Block_no_colition.Init(textu,-8,-8);
 }
-void Platform::Update(int Velocity){
+void Platform::Update(float velocity){
 	/*
 	for(int i=0;i<cant_bloq_plat;i++) { 
 	Plat0[i].Update( 3 ); /// Velocidad (speed = -1* 3)
@@ -106,31 +106,31 @@ void Platform::Update(int Velocity){
 		for(int i=0;i<this->Get_cant_bloq_plat(j);i++) {
 			switch(j){
 			case 0:
-				Plat0[i].Update( Velocity ); /// Velocidad (speed = -1* 3)
+				Plat0[i].Update( velocity ); /// Velocidad (speed = -1* 3)
 				break;
 			case 1:
-				Plat1[i].Update( Velocity ); /// Velocidad (speed = -1* 3)
+				Plat1[i].Update( velocity ); /// Velocidad (speed = -1* 3)
 				break;
 			case 2:
-				Plat2[i].Update(Velocity ); /// Velocidad (speed = -1* 3)
+				Plat2[i].Update(velocity ); /// Velocidad (speed = -1* 3)
 				break;
 			case 3:
-				Plat3[i].Update( Velocity );
+				Plat3[i].Update( velocity );
 				break;
 			case 4:
-				Plat4[i].Update( Velocity );
+				Plat4[i].Update( velocity );
 				break;
 			case 5:
-				Plat5[i].Update( Velocity );
+				Plat5[i].Update( velocity );
 				break;
 			case 6:
-				Plat6[i].Update( Velocity );
+				Plat6[i].Update( velocity );
 				break;
 			case 7:
-				Plat7[i].Update( Velocity );
+				Plat7[i].Update( velocity );
 				break;
 			case 8:
-				Plat8[i].Update( Velocity );
+				Plat8[i].Update( velocity );
 				break;
 			default:
 				//Plat1[i].Update( Velocity.x); /// Velocidad (speed = -1* 3)
@@ -138,6 +138,7 @@ void Platform::Update(int Velocity){
 			}
 		}
 	}
+	//cout<<"velocity platform: "<<velocity<<endl;
 	/// ///////////////////////////////////////////////////////////////////////////  " block_is_active.Update"
 	
 	if(Plat0[0].is_block_active()){
@@ -183,6 +184,7 @@ void Platform::Update(int Velocity){
 	}
 	pSet_Plat.Set_Predet_Plat(num_plat_rand);
 	num_plat_rand = rand()%8 + 1; /// SEMILLA DE GENERACION ////////////////////////////////////////////////////
+	
 	/*
 	if(this->VerEsquemaBloq(j,i)==".")MatrizBloq[i][j] = 0; // VerEsquemaBloq(j,i)(int x, int y)
 	else if(this->VerEsquemaBloq(j,i)=="O")MatrizBloq[i][j] = 1;

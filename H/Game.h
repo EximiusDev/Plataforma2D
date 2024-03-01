@@ -20,6 +20,7 @@ public:
 	~Game();
 	void Stop();
 	
+	float GetDeltaTime();
 	float GetTime_Sec_Curr_Scn(); // seconds of current Scene
 	float GetTime_mSec_Curr_Scn();
 	float GetTime_mSec_Pause();
@@ -32,6 +33,8 @@ private:
 	Clock clk2;
 	Clock clk_pause;
 	long millisec_paused = 0;
+	
+	float delta;
 };
 
 #endif

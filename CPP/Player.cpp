@@ -28,15 +28,16 @@ Player::Player(): Object() {
 	
 }
 
-void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left, bool collide_With_wall_right,int aceleration,Game& playgame) {
-	speedG={0,0};
+void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left, bool collide_With_wall_right,float velocity,Game& playgame) {
+	//speedG={0,0};
+	speedG={- velocity,0};
 	
 	if (collide_With_floor) { //Si no esta en el aire...
 		jumping_time.restart(); // El reloj de salto se resetea=
 		jumping_Animation = false; // Se apaga la animacion de salto
 		on_Air_Falling = false; // No esta activada la caida 
 		on_Air_Jumping = false;
-		speedG.x = -aceleration;
+		speedG.x = - velocity;
 		//No esta activado el salto 
 		//La plataforma traslada al jugador
 		///speedG = worldspeed; //La plataforma traslada al jugador
@@ -58,12 +59,12 @@ void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_
 		playgame.SetScene(new Scene_GameOver(p_score));
 		
 	}
-	if (jumping_time.getElapsedTime().asMilliseconds() >= 500 || !Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::W) && !Keyboard::isKeyPressed(Keyboard::Space) || r1.top < 0|| collide_With_top && !collide_With_floor) { //Si paso el tiempo O si no fueron apretadas las tecla de salto en el aire...
+	if (jumping_time.getElapsedTime().asMilliseconds() >= 500 || !Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::W) || r1.top < 0|| collide_With_top && !collide_With_floor) { //Si paso el tiempo O si no fueron apretadas las tecla de salto en el aire...
 		on_Air_Falling = true; //Se activa la caida
 		on_Air_Jumping = false; //Se apaga la animacion de salto
 	}
 	
-	if (!on_Air_Falling && (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space))) { // Si no esta cayendo y se apreto la tecla de salto...
+	if (!on_Air_Falling && (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) ) ) { // Si no esta cayendo y se apreto la tecla de salto...
 		jumping_Animation = true; // Se activa la animacion de salto
 		on_Air_Jumping = true; // Se activa el salto
 		speedG.y = -10; // Velocidad de salto
@@ -71,20 +72,20 @@ void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_
 	
 	if ((Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D))&&r1.left + r1.width < resolutionG.x && !collide_With_wall_right ) {
 		
-		speedG.x = 10; //Velocidad de movimiento
+		speedG.x = + 10; //Velocidad de movimiento
 		scaleG.x = resolutionG.x * 0.0003; //Se espeja el sprite
 		spr.setPosition(r1.left, r1.top); //Se arregla el error del espejo
 		walking_animation = true; // Se activa la animacion de movimiento
 	}
 	
 	if ((Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)) && !collide_With_wall_left && r1.left > 0) {
-		speedG.x = -10; //Velocidad de movimiento
+		speedG.x = -velocity -10; //Velocidad de movimiento
 		scaleG.x = resolutionG.x * -0.0003f; //Se espeja el sprite
 		spr.setPosition(r1.left + r1.width, r1.top); //Se arregla el error del espejo
 		walking_animation = true;
 	}
 	
-	
+	//cout<<"velocity player: "<<velocity<<endl;
 	
 	tex.loadFromFile(Animation());
 	spr.setTexture(tex);

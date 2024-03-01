@@ -8,8 +8,8 @@ using namespace std;
 //Scene_GameOver::Scene_GameOver() {
 Scene_GameOver::Scene_GameOver(int score) {
 	m_score = score;
-	Tex.resize(3);
-	Spr.resize(3);
+	Tex.resize(4);
+	Spr.resize(4);
 	Tex[0].loadFromFile("./Textures/GameOver.png");
 	Spr[0].setTexture(Tex[0]);
 	
@@ -21,7 +21,26 @@ Scene_GameOver::Scene_GameOver(int score) {
 	Spr[2].setTexture(Tex[2]);
 	Spr[2].setPosition(364,429);
 	
+	Tex[3].loadFromFile("./Textures/button.png");
+	Spr[3].setTexture(Tex[3]);
+	Spr[3].setPosition(364,229);
+	
 	this->SaveAndLoad(m_score);
+	
+	//cout<<"Current score = "<<score<<endl;
+	cout<<"Current score = "<<m_score<<endl;
+	int highScore = SaveAndLoad(m_score);
+	cout<<"HighScore = "<<highScore<<endl;
+	
+	m_font.loadFromFile("RetroGaming.ttf");
+	txt_score.setFont(m_font);
+	//txt_highScore.setFont(m_font);
+	
+	txt_score.setString("Score: " + std::to_string(m_score) + "   HighScore: "+ std::to_string(highScore)); 
+	//txt_score.setString("Score: " + std::to_string(m_score) + " \nHighScore: "+ std::to_string(highScore)); 
+	txt_score.setFillColor({255,255,255});
+	txt_score.setPosition(364 + 10,229 + 12);
+	txt_score.setCharacterSize(28); //24
 }
 
 void Scene_GameOver::Update (Game & playgame, RenderWindow & win){
@@ -48,16 +67,14 @@ void Scene_GameOver::Update (Game & playgame, RenderWindow & win){
 	srand(time(0));
 	//int score = rand()%100;
 	
-	//cout<<"Current score = "<<score<<endl;
-	cout<<"Current score = "<<m_score<<endl;
-	int highScore = SaveAndLoad(m_score);
-	cout<<"HighScore = "<<highScore<<endl;
 }
 
 void Scene_GameOver::Draw (RenderWindow & win){
 	win.draw(Spr[0]);
 	win.draw(Spr[1]);
 	win.draw(Spr[2]);
+	win.draw(Spr[3]);
+	win.draw(txt_score);
 }
 int Scene_GameOver::SaveAndLoad(int score){
 	//int highscore;

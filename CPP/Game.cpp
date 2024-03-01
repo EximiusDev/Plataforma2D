@@ -55,7 +55,8 @@ void Game::Run(){
 	//Clock clk2;
 	while(m_window.isOpen()) {
 		
-		float delta = clk1.restart().asSeconds();
+		//float delta = clk1.restart().asSeconds();
+		delta = clk1.restart().asSeconds();
 		// cout<<delta<<endl;
 		//cout<<clk2.getElapsedTime().asMilliseconds()<<endl;
 		//cout<<clk2.getElapsedTime().asSeconds()<<endl;
@@ -100,6 +101,11 @@ void Game::Draw ( ) {
 	m_scene->Draw(m_window);
 }
 
+float Game::GetDeltaTime(){
+	return delta;
+	//return clk1.getElapsedTime().asSeconds();
+	//return clk1.getElapsedTime().asMilliseconds();
+}
 float Game::GetTime_Sec_Curr_Scn(){
 	return clk2.getElapsedTime().asSeconds();
 }

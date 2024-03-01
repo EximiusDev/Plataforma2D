@@ -53,8 +53,9 @@ private:
 	bool collide_With_wall_right;
 	bool collide_With_wall_left;
 	Vector2f platformVelocity={2,2};
-	Clock acelerador;
-	int aceleration;
+	
+	
+	float acel_velocity; // Clock acelerador;
 	///Vector2f worldspeed = {-0.5,0};  agregar despues
 	
 	//const float GridSize = 80.f;

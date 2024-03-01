@@ -12,7 +12,7 @@ private:
 	FloatRect r1;
 public:
 	Background();
-	void Update(int i);
+	void Update(float  velocity);
 	void Init(string name);
 	
 	

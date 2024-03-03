@@ -24,7 +24,13 @@ public:
 	void Draw (RenderWindow & win) override;
 	void InputEvents (Event & event) override {};
 private:
+	Texture Tex;
+	Sprite Spr;
+	
+	Mouse Arrow;
+	Vector2i r1;
 };
 
 #endif
+
 

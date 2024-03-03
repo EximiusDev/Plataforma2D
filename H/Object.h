@@ -26,6 +26,7 @@ protected:
 public:
 	Object();
 	Object(string name);
+	void Init(string name,int i,int j);
 	void Update();
 	void Draw (RenderWindow& win);
 	

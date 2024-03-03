@@ -3,6 +3,8 @@
 #include "Scene.h"
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Texture.hpp>
 
 class Scene_Pause : public Scene {
 public:
@@ -13,6 +15,8 @@ public:
 private:
 	Font m_font;
 	Text txt_button_menu, txt_button_play;
+	Texture Tex;
+	Sprite Spr;
 };
 
 #endif

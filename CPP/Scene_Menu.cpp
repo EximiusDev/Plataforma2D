@@ -3,6 +3,7 @@
 #include "../H/Game.h"
 #include <SFML/Window/Keyboard.hpp>
 #include "../H/Scene_Play.h"
+#include "../Scene_HighScore.h"
 
 using namespace sf;
 using namespace std;
@@ -45,16 +46,18 @@ void Scene_Menu::Update (Game & playgame, RenderWindow & win) {
 	}else{
 		Spr[1].setColor(Color(255,255,255));
 	}
-	///if (Spr[2].getGlobalBounds().contains(r1.x,r1.y)){ 
-	///	Spr[2].setColor(Color(200,200,200));
-	///if(Arrow.isButtonPressed(Arrow.Left)){
-	///	playgame.SetScene(new Scene_Score());
-	///} 
-	///}else{
-	///	Spr[1].setColor(Color(255,255,255));
-	///}
-		 //playgame.SetScene(new Match());
-		///new_scene = true;
+	
+	if (Spr[2].getGlobalBounds().contains(r1.x,r1.y)){ 
+		Spr[2].setColor(Color(200,200,200));
+		if(Arrow.isButtonPressed(Arrow.Left)&&Cl.getElapsedTime().asMilliseconds() >= 100){
+			playgame.SetScene(new Scene_HighScore());
+			Cl.restart();
+		} 
+	}else{
+		Spr[2].setColor(Color(255,255,255));
+	}
+	//playgame.SetScene(new Match());
+	///new_scene = true;
 	if (Spr[3].getGlobalBounds().contains(r1.x,r1.y)){ 
 		Spr[3].setColor(Color(200,200,200));
 		if(Arrow.isButtonPressed(Arrow.Left)){
@@ -78,38 +81,3 @@ void Scene_Menu::Draw (RenderWindow & win) {
 }
 
 
-/*
-Scene_Menu::~Scene_Menu() {
-
-}*/
-
-
-
-
-
-/*
-Texture t;
-Sprite s;
-
-t.loadFromFile("sfml.png");
-s.setTexture(t);
-s.setPosition(175, 130);
-*/
-/*
-while(win.isOpen()) {
-
-// procesar eventos
-Event evt;
-while(win.pollEvent(evt)) {
-if(evt.type == Event::Closed)
-win.close();	
-}
-
-// actualizar
-s.move(0.005,0.01);
-
-// redibujar todo
-win.clear(Color(255,255,255,255));
-win.draw(s);
-win.display();
-*/

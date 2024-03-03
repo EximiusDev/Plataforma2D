@@ -15,17 +15,20 @@ using namespace std;
 Player::Player(): Object() {
 	
 	///Cambio de variables
-	scaleG = {
-		resolutionG.x * 0.0003f,
-			resolutionG.x * 0.0003f
-	};
+	/// Dimensiones_Texture_Player = {155 , 277} /// Dimensiones_Texture_Bloque = {24 , 24} // son 16 bloques por pantalla
 	
+	scaleG = { 24.f/(resolutionG.x/16.f) ,  24.f/(resolutionG.x/16.f) }; // SCALE =  0.3
+	//scaleG = {resolutionG.x * 0.0003f, resolutionG.x * 0.0003f}; /// 1280 * 0.0003 = 0.384 -> 0.3
+	cout<<scaleG.x<<" escala "<<scaleG.y<<endl;
 	///Modificacion del spr
 	spr.setPosition(resolutionG.x * 0.4f, resolutionG.y * 0.5f);
 	
 	///Modificacion del spr
 	spr.setScale(scaleG);
 	
+	//p_score = 0;
+	//score_pos = 0;
+	sumar_score = false;
 }
 
 void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left, bool collide_With_wall_right,float velocity,Game& playgame) {
@@ -49,17 +52,18 @@ void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_
 		on_Air_Falling = true; // Esta cayendo
 		speedG.y = +9; // Velocidad de caida
 	}
-	if ( r1.left < 0) {
+	if ( r1.left < 0 ) {  ///Sale de la pantalla para la izquierda
 		spr.setPosition(resolutionG.x * 0.4f, resolutionG.y * 0.2f);
 		playgame.SetScene(new Scene_GameOver(p_score));
 		
 	}
-	if ( r1.top > resolutionG.y) {
+	if ( r1.top > resolutionG.y) {  ///Se cae de la pantalla para el vacio
 		spr.setPosition(resolutionG.x * 0.4f, resolutionG.y * 0.2f);
 		playgame.SetScene(new Scene_GameOver(p_score));
 		
 	}
-	if (jumping_time.getElapsedTime().asMilliseconds() >= 500 || !Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::W) || r1.top < 0|| collide_With_top && !collide_With_floor) { //Si paso el tiempo O si no fueron apretadas las tecla de salto en el aire...
+	if (jumping_time.getElapsedTime().asMilliseconds() >= 600 || !Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::W) || collide_With_top && !collide_With_floor) { //Si paso el tiempo O si no fueron apretadas las tecla de salto en el aire...
+	//if (jumping_time.getElapsedTime().asMilliseconds() >= 500 || !Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::W) || r1.top < 0|| collide_With_top && !collide_With_floor) { //Si paso el tiempo O si no fueron apretadas las tecla de salto en el aire...
 		on_Air_Falling = true; //Se activa la caida
 		on_Air_Jumping = false; //Se apaga la animacion de salto
 	}
@@ -76,6 +80,9 @@ void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_
 		scaleG.x = resolutionG.x * 0.0003; //Se espeja el sprite
 		spr.setPosition(r1.left, r1.top); //Se arregla el error del espejo
 		walking_animation = true; // Se activa la animacion de movimiento
+		
+		
+		if(speedG.x != - velocity) sumar_score = true;
 	}
 	
 	if ((Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)) && !collide_With_wall_left && r1.left > 0) {
@@ -83,11 +90,14 @@ void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_
 		scaleG.x = resolutionG.x * -0.0003f; //Se espeja el sprite
 		spr.setPosition(r1.left + r1.width, r1.top); //Se arregla el error del espejo
 		walking_animation = true;
+		
+		sumar_score =false;
 	}
 	
 	//cout<<"velocity player: "<<velocity<<endl;
 	
 	tex.loadFromFile(Animation());
+	//tex.loadFromFile("./Textures/Player-Hitbox.png");
 	spr.setTexture(tex);
 	spr.setScale(scaleG);
 	spr.move(speedG);
@@ -95,6 +105,28 @@ void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_
 	r1 = spr.getGlobalBounds();
 	//speedG = worldspeed; /// la velocidad por defecto es la velocidad del mundo
 	
+	/*
+	score_pos += speedG.x;
+	//score_pos += velocity;
+	if(speedG.x > 0){ 		
+		if (p_score <= score_pos) p_score += speedG.x; // p_score += p_speed.x;
+		//if (p_score <= score_pos) p_score += velocity; // p_score += p_speed.x;
+	}*/
+	
+	if(speedG.x == - velocity) sumar_score =false;
+	if(speedG.x<score_spe) sumar_score =false;
+	if(sumar_score){
+		if (score_spe <= score_pos){
+			p_score += velocity/10; 
+			score_pos = score_spe;
+		}
+		
+	}
+	score_spe -= velocity;//score_spe = speedG.x;
+	score_pos += speedG.x;
+	
+	cout<<"speed "<<speedG.x<<endl;
+	cout<<"score_pos "<<score_pos<<endl;
 }
 string Player::Animation() {
 	number_Animation += 1;
@@ -119,4 +151,7 @@ string Player::Animation() {
 
 void Player::Change_score(int score){
 	p_score = score;
+}
+int Player::GetScore(){
+	return p_score;
 }

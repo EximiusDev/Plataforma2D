@@ -7,8 +7,12 @@ Object::Object() {}
 Object::Object(string name) {
 	tex.loadFromFile(name);
 	spr.setTexture(tex);
-	
-	
+}
+void Object::Init(string name,int i,int j){
+	tex.loadFromFile(name);
+	spr.setTexture(tex);
+	positionG={i*1.f,j*1.f}; ///i = x, j = y
+	spr.setPosition(positionG);
 }
 void Object::Draw (RenderWindow& win ) {
 	win.draw(spr);

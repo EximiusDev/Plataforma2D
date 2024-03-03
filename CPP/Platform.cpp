@@ -22,7 +22,11 @@ Platform::Platform() {
 	}
 	
 	for(int j=0;j<cant_bloq_plat;j++) { 
-		block_is_active[8][j]= true;
+		//block_is_active[4][j]= true;
+		//block_is_active[5][j]= true;
+		//block_is_active[6][j]= true;
+		block_is_active[7][j]= true;
+		//block_is_active[8][j]= true;
 	}
 	
 	Plat0.resize(cant_bloq_plat);//Plat0.resize(16);

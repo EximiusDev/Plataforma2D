@@ -25,29 +25,32 @@ Scene_Play::Scene_Play() {
 	m_floor.setFillColor({100,200,100});
 	*/
 	
-	//initialize text
-	m_font.loadFromFile("RetroGaming.ttf");
+	pinchos.Init("./Textures/Pinchos.png",-50,0);
+	
+	///initialize text
+	//m_font.loadFromFile("RetroGaming.ttf");
+	m_font.loadFromFile("JollyLodger.ttf");
 	txt_mov_lat.setFont(m_font);
 	txt_salto.setFont(m_font);
 	txt_score.setFont(m_font);
 	
 	txt_mov_lat.setString("Movimiento: Left - Right");
 	txt_mov_lat.setFillColor({255,255,255});
-	txt_mov_lat.setPosition(0,720-30);
-	txt_mov_lat.setCharacterSize(20);
+	txt_mov_lat.setPosition(0 + 300,720-40);
+	txt_mov_lat.setCharacterSize(30);
 	
 	//txt_subtitulo.setString("<presione Enter para comenzar a jugar> \n<presione Escape para comenzar a jugar>");
 	txt_salto.setString("Salto: Up");
 	//txt_salto.setFillColor({150,150,150});
 	txt_salto.setFillColor({255,255,255});
-	txt_salto.setPosition(500,720-30);
-	txt_salto.setCharacterSize(20);
+	txt_salto.setPosition(1280 - 300,720-40);
+	txt_salto.setCharacterSize(30);
 	
 	
 	txt_score.setString("Score : " + std::to_string(m_score) + " \nTime: "+ std::to_string(seconds_game)); //txt_score.setString("Score : " + std::to_string(m_score) + ""); //txt_score.setString("Score : " + score + "");
 	txt_score.setFillColor({255,255,255});
 	txt_score.setPosition(0,0);
-	txt_score.setCharacterSize(20);
+	txt_score.setCharacterSize(30);
 	acel_velocity = 3.f;
 }
 
@@ -126,7 +129,7 @@ void Scene_Play::Update (Game & playgame, RenderWindow & win) {
 		
 		/// ////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
-		///m_score = m_player.GetScore();
+		m_score = player.GetScore();
 		seconds_pause = playgame.GetTime_mSec_Pause()/100; /// que lo haga el game
 		seconds_game = playgame.GetTime_mSec_Curr_Scn()/100;
 		seconds_played = ( playgame.GetTime_mSec_Curr_Scn() - playgame.GetTime_mSec_Pause() )/100;
@@ -136,7 +139,7 @@ void Scene_Play::Update (Game & playgame, RenderWindow & win) {
 		if(seconds_game<=seconds_pause) cout<<"ERROR 1"<<endl;
 		if(seconds_played!=seconds_game - seconds_pause) cout<<"ERROR 2"<<endl;
 		
-		player.Change_score(seconds_played);
+		///player.Change_score(seconds_played);
 	}
 }
 
@@ -157,6 +160,7 @@ void Scene_Play::Draw (sf::RenderWindow & win) {
 	background_Parallax.Draw(win);
 	plat.Draw(win);
 	player.Draw(win);
+	pinchos.Draw(win);
 	
 	win.draw(txt_mov_lat);
 	win.draw(txt_salto);

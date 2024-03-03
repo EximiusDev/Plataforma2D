@@ -26,13 +26,17 @@ private:
 	FloatRect r1= spr.getGlobalBounds();
 	//FloatRect m_bounds= spr.getGlobalBounds();
 	//FloatRect other_bounds;
-	int p_score;
+	//int p_score;
+	float p_score=0;
+	float score_pos=0;
+	float score_spe=0;
+	bool sumar_score;
 public:
 	Player();
 	void Update(bool collide_With_floor, bool collide_With_top,bool collide_With_wall_left,bool collide_With_wall_right,float velocity,Game& playgame);
 	string Animation ();
 	void Change_score(int score);
-	
+	int GetScore();
 	
 };	
 

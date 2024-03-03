@@ -55,10 +55,10 @@ void Preset_Platform::Set_Predet_Plat(int num_plat){
 		//						  "0123456789"
 		Preset_Platform_Plat[0] = "........";
 		Preset_Platform_Plat[1] = "........";
-		Preset_Platform_Plat[2] = "........";
-		Preset_Platform_Plat[3] = "....O...";
+		Preset_Platform_Plat[2] = "...OO...";
+		Preset_Platform_Plat[3] = "........";
 		Preset_Platform_Plat[4] = "........";
-		Preset_Platform_Plat[5] = "O......O";
+		Preset_Platform_Plat[5] = "OO.....O";
 		Preset_Platform_Plat[6] = "........";
 		Preset_Platform_Plat[7] = "........";
 		Preset_Platform_Plat[8] = "........";
@@ -97,7 +97,7 @@ void Preset_Platform::Set_Predet_Plat(int num_plat){
 		Preset_Platform_Plat[5] = "........";
 		Preset_Platform_Plat[6] = "........";
 		Preset_Platform_Plat[7] = "........";
-		Preset_Platform_Plat[8] = "........";
+		Preset_Platform_Plat[8] = "....O...";
 		break;
 		
 	case 6:
@@ -128,13 +128,13 @@ void Preset_Platform::Set_Predet_Plat(int num_plat){
 		//						  "0123456789"
 		Preset_Platform_Plat[0] = "........";
 		Preset_Platform_Plat[1] = "........";
-		Preset_Platform_Plat[2] = "........";
+		Preset_Platform_Plat[2] = "...OO...";
 		Preset_Platform_Plat[3] = "........";
 		Preset_Platform_Plat[4] = "........";
 		Preset_Platform_Plat[5] = "........";
-		Preset_Platform_Plat[6] = "........";
-		Preset_Platform_Plat[7] = ".OOOO...";
-		Preset_Platform_Plat[8] = "........";
+		Preset_Platform_Plat[6] = "OO......";
+		Preset_Platform_Plat[7] = "........";
+		Preset_Platform_Plat[8] = ".......O";
 		break;
 	case 9:
 		//						  "0123456789"

@@ -21,11 +21,11 @@ public:
 	void InputEvents (Event & event) override {};
 	//~Scene_Menu();
 private:
-vector<Texture>Tex;
-vector<Sprite>Spr;
-
-Mouse Arrow;
-Vector2i r1;
+	vector<Texture>Tex;
+	vector<Sprite>Spr;
+	Clock Cl;
+	Mouse Arrow;
+	Vector2i r1;
 };
 
 #endif

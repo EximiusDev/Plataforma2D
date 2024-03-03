@@ -48,6 +48,7 @@ private:
 	Player player;
 	Parallax background_Parallax;
 	Platform plat;
+	Object pinchos;
 	bool collide_With_top;
 	bool collide_With_floor;
 	bool collide_With_wall_right;

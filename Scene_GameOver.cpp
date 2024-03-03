@@ -40,7 +40,7 @@ Scene_GameOver::Scene_GameOver(int score) {
 	txt_score.setString("Score: " + std::to_string(m_score) + "        HighScore: "+ std::to_string(highScore)); 
 	//txt_score.setString("Score: " + std::to_string(m_score) + "   HighScore: "+ std::to_string(highScore)); //txt_score.setString("Score: " + std::to_string(m_score) + " \nHighScore: "+ std::to_string(highScore)); 
 	txt_score.setFillColor({255,255,255});
-	txt_score.setPosition(364 + 100, 229 + 12);
+	txt_score.setPosition(364 + 100, 229 + 8);
 	//txt_score.setPosition(364 + 10, 229 + 12);
 	txt_score.setCharacterSize(40); //24
 	//txt_score.setCharacterSize(28); //24

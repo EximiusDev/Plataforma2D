@@ -13,7 +13,8 @@
 #include <vector>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Window/Mouse.hpp>
-using namespace sf;
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Text.hpp>
 using namespace sf;
 using namespace std;
 class Scene_HighScore:public Scene {
@@ -24,11 +25,22 @@ public:
 	void Draw (RenderWindow & win) override;
 	void InputEvents (Event & event) override {};
 private:
-	Texture Tex;
-	Sprite Spr;
+	Texture txtr_back;
+	Sprite spr_back;
 	
 	Mouse Arrow;
 	Vector2i r1;
+	
+	Font m_font;
+	//Text txt_score;
+	//Text txt_highScore;
+	Text txt_title;
+	Text txt_aux;
+	Text txt_aux2;
+	Text txt_botones;
+	
+	vector<Text> txt_names; //_names;
+	vector<Text> txt_scores; //_scores;
 };
 
 #endif

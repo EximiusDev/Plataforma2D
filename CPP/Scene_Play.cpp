@@ -49,7 +49,7 @@ Scene_Play::Scene_Play() {
 	
 	txt_score.setString("Score : " + std::to_string(m_score) + " \nTime: "+ std::to_string(seconds_game)); //txt_score.setString("Score : " + std::to_string(m_score) + ""); //txt_score.setString("Score : " + score + "");
 	txt_score.setFillColor({255,255,255});
-	txt_score.setPosition(0,0);
+	txt_score.setPosition(0 + 35,0);
 	txt_score.setCharacterSize(30);
 	acel_velocity = 3.f;
 }

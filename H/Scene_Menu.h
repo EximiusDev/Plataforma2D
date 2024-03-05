@@ -9,6 +9,11 @@
 #include <vector>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Window/Mouse.hpp>
+
+#include "../InputBox.h"
+#include <SFML/Graphics.hpp>
+#include <string>
+//#include <SFML/Graphics/Font.hpp>
 using namespace sf;
 using namespace std;
 
@@ -18,14 +23,19 @@ public:
 	void Update (Game & playgame, RenderWindow & win) override;
 	void Draw (RenderWindow & win) override;
 	
-	void InputEvents (Event & event) override {};
-	//~Scene_Menu();
+	void InputEvents (Event & event) override;
+	~Scene_Menu()override ;
 private:
-	vector<Texture>Tex;
-	vector<Sprite>Spr;
+	vector<Texture>txtr_button;
+	vector<Sprite>spr_button;
 	Clock Cl;
 	Mouse Arrow;
 	Vector2i r1;
+	
+	InputText m_text_inputBox;
+	Font m_font;
+	//char user[25];
+	Game* m_playgame;
 };
 
 #endif

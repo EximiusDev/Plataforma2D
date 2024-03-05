@@ -12,6 +12,7 @@ public:
 	void Update (Game & playgame,RenderWindow & win) override;
 	void Draw (sf::RenderWindow & win) override;
 	void InputEvents (Event & event) override;
+	~Scene_Pause() override {};
 private:
 	Font m_font;
 	Text txt_button_menu, txt_button_play;

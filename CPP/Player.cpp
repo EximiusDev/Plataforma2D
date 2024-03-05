@@ -19,7 +19,7 @@ Player::Player(): Object() {
 	
 	scaleG = { 24.f/(resolutionG.x/16.f) ,  24.f/(resolutionG.x/16.f) }; // SCALE =  0.3
 	//scaleG = {resolutionG.x * 0.0003f, resolutionG.x * 0.0003f}; /// 1280 * 0.0003 = 0.384 -> 0.3
-	cout<<scaleG.x<<" escala "<<scaleG.y<<endl;
+	//cout<<scaleG.x<<" escala "<<scaleG.y<<endl;
 	///Modificacion del spr
 	spr.setPosition(resolutionG.x * 0.4f, resolutionG.y * 0.5f);
 	
@@ -125,8 +125,8 @@ void Player::Update(bool collide_With_floor, bool collide_With_top,bool collide_
 	score_spe -= velocity;//score_spe = speedG.x;
 	score_pos += speedG.x;
 	
-	cout<<"speed "<<speedG.x<<endl;
-	cout<<"score_pos "<<score_pos<<endl;
+	//cout<<"speed "<<speedG.x<<endl;
+	//cout<<"score_pos "<<score_pos<<endl;
 }
 string Player::Animation() {
 	number_Animation += 1;

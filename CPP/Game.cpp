@@ -1,5 +1,4 @@
 #include "../H/Game.h"
-#include <SFML/Window/Event.hpp>
 //#include <SFML/Window/VideoMode.hpp>
 //#include <SFML/Graphics/RenderWindow.hpp>
 #include "../H/Scene.h"
@@ -16,6 +15,8 @@ Game::Game(Scene *first_scene):m_window(VideoMode(1280,720),"Juego Final P.O.O")
 	
 	// o sino como siempre empieza en menu
 	// m_scene = new Scene_Menu();
+	
+	this->Strc_aux = Saved_data.Strc_aux; /// agregar despues
 }
 
 void Game::SetScene(Scene *next_scene){
@@ -84,12 +85,27 @@ void Game::Run(){
 }
 
 void Game::ProcessEvents ( ) {
-	Event evt;
-	while(m_window.pollEvent(evt)) {
-		if(evt.type == Event::Closed)
+	//Event evt;
+	while(m_window.pollEvent(m_evt)) {
+		if(m_evt.type == Event::Closed){
 			// m_window.close();
 			Stop();
-			
+		}
+		else if (this->m_evt.type == sf::Event::KeyPressed && this->m_evt.key.code == sf::Keyboard::Escape){
+			//this->saveScores();
+			this->m_window.close();
+		}
+		/*
+		else if (e.type==sf::Event::KeyPressed && e.key.code==sf::Keyboard::Return) { // si apretó enter, se toma la palabra y se la agrega a la lista
+		std::string string_ingresado = text_entrada.getValue(); // obtener la palabra que se ingresó
+		palabras += "\n\t"; palabras += string_ingresado;
+		text_palabras.setString(palabras);
+		text_entrada.reset(); // reiniciar la entrada para tomar otra palabra
+		} else text_entrada.processEvent(e); // para que el texto procese las demás teclas que pulsamos
+		*/
+		else{
+			this->m_scene->InputEvents(this->m_evt); // this->m_scene->processEvent(this->m_evt);
+		}
 	}
 }
 
@@ -118,4 +134,11 @@ float Game::GetTime_mSec_Pause(){
 		//else return millisec_paused;
 	}
 	else return millisec_paused;
+}
+
+void Game::AddScore(Data_Struct score){
+	Saved_data.AddScore(score);
+}
+Data_Manager & Game::Get_Dat_Manager(){
+	return Saved_data;
 }

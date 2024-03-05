@@ -27,6 +27,7 @@ public:
 	
 	//void InputEvents (Event & event) override;
 	void InputEvents (Event & event) override {};
+	~Scene_Play() override {};
 private:
 	//RectangleShape m_floor;
 	//Player_ m_player;

@@ -136,8 +136,11 @@ void Scene_Play::Update (Game & playgame, RenderWindow & win) {
 		//txt_score.setString("Score: " + to_string(m_score) + " \nTime: "+ to_string(seconds_game - seconds_pause));
 		txt_score.setString("Score: " + to_string(m_score) + " \nTime: "+ to_string(seconds_played));
 		//txt_score.setString("Score: " + to_string(m_score) + " \nTime: "+ to_string(seconds_game) + " \n time pause: " + to_string(seconds_pause));
-		if(seconds_game<=seconds_pause) cout<<"ERROR 1"<<endl;
-		if(seconds_played!=seconds_game - seconds_pause) cout<<"ERROR 2"<<endl;
+		
+		//if(seconds_game<seconds_pause) cout<<"ERROR: tiempo pausa 1"<<endl;
+		if(seconds_game<seconds_pause) cerr<<"ERROR: tiempo pausa 1"<<endl;
+		if(seconds_played!=seconds_game - seconds_pause) cerr<<"ERROR: tiempo pausa 2"<<endl;
+		//if(seconds_played!=seconds_game - seconds_pause) cout<<"ERROR: tiempo pausa 2"<<endl;
 		
 		///player.Change_score(seconds_played);
 	}

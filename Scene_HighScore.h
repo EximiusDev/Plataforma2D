@@ -15,6 +15,17 @@
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
+
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <string>
+#include "string.h"
+#include <cstring>
+#include <sstream>
+#include <ctime>
+#include <time.h>
+
 using namespace sf;
 using namespace std;
 class Scene_HighScore:public Scene {
@@ -24,6 +35,9 @@ public:
 	void Update (Game & playgame, RenderWindow & win) override;
 	void Draw (RenderWindow & win) override;
 	void InputEvents (Event & event) override {};
+	~Scene_HighScore() override {};
+	
+	static bool reverse_sort(Data_Struct a1,Data_Struct a2);
 private:
 	Texture txtr_back;
 	Sprite spr_back;
@@ -35,12 +49,14 @@ private:
 	//Text txt_score;
 	//Text txt_highScore;
 	Text txt_title;
-	Text txt_aux;
-	Text txt_aux2;
+	Text txt_tittle_name;
+	Text txt_tittle_score;
 	Text txt_botones;
 	
 	vector<Text> txt_names; //_names;
+	vector<Text> txt_date; //_names;
 	vector<Text> txt_scores; //_scores;
+	bool  init_highscores = false;
 };
 
 #endif

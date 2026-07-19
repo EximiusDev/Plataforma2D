@@ -1,60 +1,64 @@
 # Plataforma2D
 
-Proyecto final de Programación Orientada a Objetos (FICH - UNL).  
-Juego de plataformas lateral infinito en 2D desarrollado en C++ con SFML, con modo de 1 o 2 jugadores.
+Proyecto final de Programación Orientada a Objetos (FICH - UNL) desarrollado en C++ con SFML.
 
-## Descripción
+Se trata de un juego de plataformas lateral 2D de desplazamiento infinito, con soporte para 1 o 2 jugadores.
 
-El juego está organizado por escenas (menú, juego, pausa, game over y high score).  
-El objetivo es avanzar, evitar obstáculos y sumar puntaje mientras el escenario se desplaza lateralmente.
+## Características principales
 
-## Tecnologías
+- Juego de plataformas 2D con avance lateral continuo.
+- Modo de 1 jugador o 2 jugadores.
+- Menú principal con selección de cantidad de jugadores.
+- Sistema de puntaje y guardado de datos.
+- Escenas de pausa, game over y high scores.
 
-- **C++**
-- **SFML 2.x** (`graphics`, `window`, `audio`, `system`, `network`)
-- **ZinjaI** como configuración principal del proyecto (`Prueba1.zpr`)
+## Tecnologías utilizadas
 
-## Estructura del repositorio
+- **Lenguaje:** C++
+- **Librería gráfica/multimedia:** SFML (graphics, window, audio, system, network)
+- **IDE/proyecto original:** ZinjaI (`Prueba1.zpr`)
 
-- `/home/runner/work/Plataforma2D/Plataforma2D/CPP`: implementación principal (`main`, `Game`, escenas y objetos).
-- `/home/runner/work/Plataforma2D/Plataforma2D/H`: headers principales del juego.
-- `/home/runner/work/Plataforma2D/Plataforma2D/Scene_GameOver.*` y `/home/runner/work/Plataforma2D/Plataforma2D/Scene_HighScore.*`: escenas adicionales.
-- `/home/runner/work/Plataforma2D/Plataforma2D/Textures`: sprites y fondos.
-- `/home/runner/work/Plataforma2D/Plataforma2D/GameData.bin` y `/home/runner/work/Plataforma2D/Plataforma2D/SaveData.bin`: persistencia de puntajes.
-- `/home/runner/work/Plataforma2D/Plataforma2D/Prueba1.zpr`: proyecto ZinjaI.
+## Controles
 
-## Flujo general del juego
+### Jugador 1
+- Moverse: **Flecha Izquierda / Flecha Derecha**
+- Saltar: **Flecha Arriba**
 
-1. `main.cpp` crea `Game` con `Scene_Menu`.
-2. `Game` maneja el loop principal: eventos, actualización y render.
-3. Las escenas derivadas de `Scene` encapsulan cada estado del juego.
-4. `Scene_Play` contiene la lógica principal de gameplay (movimiento, colisiones, score, pausa, game over).
-5. `Data_Manager` guarda/carga high scores en binario.
+### Jugador 2
+- Moverse: **A / D**
+- Saltar: **W**
 
-## Controles (según implementación actual)
+### Generales
+- **Space:** Pausar juego
+- **Enter:** Reanudar desde pausa
+- **Escape:** Volver al menú / salir según la escena
+- **Mouse:** Interacción con botones del menú
 
-- **Jugador 1**
-  - Mover: `Left` / `Right`
-  - Saltar: `Up`
-- **Jugador 2**
-  - Mover: `A` / `D`
-  - Saltar: `W`
-- **Generales**
-  - En juego: `Space` pausa
-  - En pausa: `Enter` reanuda, `Escape` vuelve al menú
-  - En menú/high score: `Escape` salir o volver según escena
+## Estructura general del proyecto
+
+- `/CPP`: implementación de escenas, juego y objetos.
+- `/H`: encabezados de clases principales.
+- `/Textures`: sprites y recursos gráficos.
+- `Data_Manager.*` y `Data_Struct.h`: gestión de datos y puntajes.
+- `Scene_GameOver.*` y `Scene_HighScore.*`: escenas adicionales.
+- `Prueba1.zpr`: configuración del proyecto en ZinjaI.
+
+## Requisitos
+
+- Compilador de C++ compatible con el estándar usado por SFML.
+- SFML instalada (módulos: `graphics`, `window`, `audio`, `system`, `network`).
+- Recursos del juego (texturas, fuentes, archivos binarios) disponibles en el directorio raíz del proyecto.
 
 ## Compilación y ejecución
 
-Este repositorio no incluye CMake ni Makefile en la raíz.  
-La configuración principal está en ZinjaI (`Prueba1.zpr`) con perfiles de Debug/Release para Windows y Linux.
+El repositorio no incluye un sistema de build moderno (CMake/Makefile), ya que el proyecto fue preparado para ZinjaI.
 
-Para ejecutar:
+Opciones recomendadas:
 
-1. Abrir `/home/runner/work/Plataforma2D/Plataforma2D/Prueba1.zpr` en ZinjaI.
-2. Verificar que SFML esté instalada y configurada en el entorno.
-3. Compilar con la configuración deseada y ejecutar.
+1. Abrir `Prueba1.zpr` en **ZinjaI** y compilar con la configuración deseada.
+2. O compilar manualmente enlazando SFML y respetando la estructura de carpetas y recursos.
 
 ## Estado del proyecto
 
-Proyecto académico finalizado y funcional como base de juego de plataformas 2D.
+Proyecto académico finalizado y funcional como entrega de POO.
+
